@@ -1,0 +1,5 @@
+1- determine purpose and objectives
+2- design UI and UX 
+3- determine code structure & technologies
+4- write code
+5- test & update
