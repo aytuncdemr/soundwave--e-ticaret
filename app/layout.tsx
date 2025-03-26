@@ -5,9 +5,9 @@ import Footer from "@/components/Footer";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import ProductsProvider from "@/context/ProductsProvider";
 import UserProvider from "@/context/UserProvider";
-import { config } from "@fortawesome/fontawesome-svg-core";
 import { ToastContainer } from "react-toastify";
 
+import { config } from "@fortawesome/fontawesome-svg-core";
 config.autoAddCss = false;
 
 export const metadata: Metadata = {
@@ -44,8 +44,8 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="tr-TR">
-			<body>
+		<html lang="tr-TR" className="scroll-smooth">
+			<body className="font-inria">
 				<ProductsProvider>
 					<UserProvider>
 						<Header></Header>

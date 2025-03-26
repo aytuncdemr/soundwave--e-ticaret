@@ -142,8 +142,9 @@ export default function Product() {
 							currentIndex: number,
 							totalSlides: number
 						) => {
-							return `${currentIndex} / ${totalSlides}`;
+							return `${currentIndex} / ${totalSlides}` ;
 						}}
+						
 					>
 						{product?.imgPaths.map(
 							(imgPath: StaticImageData, index: number) => {

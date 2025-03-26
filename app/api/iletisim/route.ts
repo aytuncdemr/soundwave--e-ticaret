@@ -1,68 +1,71 @@
 import nodemailer from "nodemailer";
+import { type ContactData } from "@/interfaces/ContactData";
 
-export interface FormData {
-	name: string | null;
-	email: string | null;
-	phoneNumber: string | null;
-	message: string | null;
-	isNotificationAllow: boolean;
-}
+const transporter = nodemailer.createTransport({
+    service: "Gmail",
+    auth: {
+        user: process.env.EMAIL,
+        pass: process.env.APP_PASSWORD,
+    },
+});
 
-async function sendEmail(formData: FormData) {
-	const transporter = nodemailer.createTransport({
-		service: "Gmail",
-		auth: {
-			user: process.env.EMAIL,
-			pass: process.env.APP_PASSWORD,
-		},
-	});
-
-	const mailOptions = {
-		from: `"${formData.name}" <${formData.email}>`,
-		to: process.env.EMAIL,
-		subject: `${formData.name}'dan gelen iletişim formu <SoundWave>`,
-		text: `Mesaj: ${formData.message}\nE-mail:${formData.email}\nTelefon Numarası: ${formData.phoneNumber}`,
-		html: `<p><strong>Mesaj:</strong> ${formData.message}</p>
-               <p><strong>Telefon Numarası:</strong> ${formData.phoneNumber}</p>
+async function sendEmail(formData: ContactData) {
+    const mailOptions = {
+        from: `"${formData.name || formData.email}" <${formData.email}>`,
+        to: process.env.EMAIL,
+        subject: `${
+            formData.name || formData.email
+        }'dan gelen iletişim formu <SoundWave>`,
+        text: `Mesaj: ${
+            formData.isNotificationAllow
+                ? formData.email + " kampanyalardan haberdar olmak istiyor."
+                : formData.message
+        }\nE-mail:${formData.email}\nTelefon Numarası: ${
+            formData.phoneNumber || ""
+        }`,
+        html: `<p><strong>Mesaj:</strong> ${
+            formData.isNotificationAllow
+                ? formData.email + " kampanyalardan haberdar olmak istiyor."
+                : formData.message
+        }</p>
+               <p><strong>Telefon Numarası:</strong> ${
+                   formData.phoneNumber || ""
+               }</p>
 			   <p><strong>E-mail:</strong> ${formData.email}</p>`,
-	};
+    };
 
-	await transporter.sendMail(mailOptions);
+    await transporter.sendMail(mailOptions);
 }
 
 export async function POST(request: Request) {
-	try {
-		const formData = (await request.json()) as FormData;
+    try {
+        const formData = (await request.json()) as ContactData;
 
-		if (
-			!formData.isNotificationAllow &&
-			(!formData.email ||
-				!formData.message ||
-				!formData.name ||
-				!formData.phoneNumber)
-		) {
-			return new Response(
-				JSON.stringify("Lütfen tüm boşlukları doldurunuz"),
-				{ status: 400, headers: { "Content-Type": "application/json" } }
-			);
-		}
-		await sendEmail(formData);
+        await sendEmail(formData);
 
-		return new Response(
-			JSON.stringify(
-				`${
-					formData.isNotificationAllow ? "Talebiniz" : "Mesajınız"
-				} başarıyla gönderilmiştir`
-			),
-			{ status: 200, headers: { "Content-Type": "application/json" } }
-		);
-	} catch (error) {
-		return new Response(
-			JSON.stringify(error instanceof Error ? error.message : error),
-			{
-				status: 500,
-				headers: { "Content-Type": "application/json" },
-			}
-		);
-	}
+        return new Response(
+            JSON.stringify({
+                message: `${
+                    formData.isNotificationAllow ? "Talebiniz" : "Mesajınız"
+                } başarıyla gönderilmiştir`,
+            }),
+            { status: 200 }
+        );
+    } catch (error) {
+        if (error instanceof Error) {
+            return new Response(
+                JSON.stringify({
+                    message: error.message,
+                }),
+                { status: 400 }
+            );
+        } else {
+            return new Response(
+                JSON.stringify({
+                    message: "Bir şeyler ters gitti.",
+                }),
+                { status: 400 }
+            );
+        }
+    }
 }

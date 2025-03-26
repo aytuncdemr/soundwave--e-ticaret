@@ -4,42 +4,8 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-	scroll-behavior: smooth;
-}
 
-body {
-	font-family: "Inria Serif", serif;
+.carousel .carousel-status {
+	@apply left-[20px] text-[18px] !important;
 }
-
-@keyframes mobileNavSlideRight {
-	from {
-		left: -300px;
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-		left: 0px;
-	}
-}
-
-.mobile-nav {
-	animation-name: mobileNavSlideRight;
-	animation-duration: 1s;
-}
-
-.banner-container {
-	background-image: linear-gradient(
-			rgba(50, 50, 50, 0.73),
-			rgba(50, 50, 50, 0.73)
-		),
-		url("/banner.jpeg");
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-}
-
-.carousel-status {
-	left: 10px !important;
-	font-size: 14px !important;
-}
+  
