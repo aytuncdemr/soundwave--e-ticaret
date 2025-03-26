@@ -1,4 +1,4 @@
-import { User } from "@/interfaces/interfaces";
+import { User } from "@/interfaces/User";
 import crypto from "crypto";
 
 async function generateOID() {

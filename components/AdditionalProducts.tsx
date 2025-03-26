@@ -3,7 +3,7 @@
 import { useContext } from "react";
 import ProductCard from "@/components/ProductCard";
 import { ProductsContext } from "@/context/ProductsProvider";
-import { type Product } from "@/interfaces/interfaces";
+import { type Product } from "@/interfaces/Product";
 
 export default function AdditionalProdutcs() {
 	const products = useContext(ProductsContext);

@@ -1,6 +1,6 @@
 "use client";
 
-import { type Product } from "@/interfaces/interfaces";
+import { type Product } from "@/interfaces/Product";
 import Image from "next/image";
 import Link from "next/link";
 

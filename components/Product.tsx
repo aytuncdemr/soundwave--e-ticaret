@@ -13,7 +13,7 @@ import { UserContext } from "@/context/UserProvider";
 import { toast } from "react-toastify";
 import Link from "next/link";
 import randIndexExpect from "@/utils/randIndexExpect";
-import { type Product } from "@/interfaces/interfaces";
+import { type Product } from "@/interfaces/Product";
 
 export default function Product() {
 	const products = useContext(ProductsContext);

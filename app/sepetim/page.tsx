@@ -1,7 +1,7 @@
 "use client";
 
 import { UserContext } from "@/context/UserProvider";
-import { Product } from "@/interfaces/interfaces";
+import { Product } from "@/interfaces/Product";
 import groupBucket from "@/utils/groupBucket";
 import {
 	faMinus,

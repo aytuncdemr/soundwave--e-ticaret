@@ -1,6 +1,6 @@
 "use client";
 
-import { type Product } from "@/interfaces/interfaces";
+import { type Product } from "@/interfaces/Product";
 import { createContext, useEffect, useState } from "react";
 
 export interface ProductsContextInterface {

@@ -3,7 +3,7 @@
 import { useContext } from "react";
 import ProductCard from "@/components/ProductCard";
 import { ProductsContext } from "@/context/ProductsProvider";
-import { Product } from "@/interfaces/interfaces";
+import { Product } from "@/interfaces/Product";
 
 export default function DroneProducts({
 	standAlonePage,

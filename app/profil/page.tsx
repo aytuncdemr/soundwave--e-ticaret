@@ -1,7 +1,7 @@
 "use client";
 
 import { UserContext } from "@/context/UserProvider";
-import { User } from "@/interfaces/interfaces";
+import { User } from "@/interfaces/User";
 import { useRouter } from "next/navigation";
 import { FormEvent, useContext, useEffect, useState } from "react";
 
