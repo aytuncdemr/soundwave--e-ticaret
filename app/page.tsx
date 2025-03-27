@@ -7,7 +7,6 @@ import Why from "@/components/Why";
 export default function Home() {
 	return (
 		<>
-		testestest
 			<section className="banner-section">
 				<Banner></Banner>
 			</section>
