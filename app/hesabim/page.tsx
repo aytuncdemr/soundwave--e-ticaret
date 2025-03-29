@@ -31,7 +31,7 @@ export default function ProfilePage() {
 
     async function sendPasswordRenew() {
         try {
-            const { data } = await axios.post("/api/sifre-yenile", {
+            await axios.post("/api/sifre-yenile", {
                 email: userContext?.user?.email,
                 _id: userContext?.user?._id,
             });

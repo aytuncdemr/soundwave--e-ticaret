@@ -6,10 +6,8 @@ import { useContext } from "react";
 import { ProductsContext } from "@/context/ProductsProvider";
 import { Product } from "@/interfaces/Product";
 import Button from "./Button";
-import { useRouter } from "next/navigation";
 
 export default function ExampleProduct() {
-    const router = useRouter();
 
     const products = useContext(ProductsContext);
     const product = products?.droneProducts?.find(

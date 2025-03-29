@@ -1,26 +1,24 @@
+import clsx from "clsx";
+
 export default function Button({
     children,
-    className,
+    className = "",
     onClick,
-    type,
+    type = "button",
 }: {
-    onClick?: (e?: any) => any;
+    onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
     className?: string;
     children: React.ReactNode;
     type?: "button" | "submit";
 }) {
     return (
         <button
-            type={type || "button"}
-            className={
-                "text-white mt-4 hover:bg-white border-black bg-black md:text-xl  hover:text-black duration-150 border " +
+            type={type}
+            className={clsx(
+                "text-white mt-4 hover:bg-white border-black bg-black md:text-xl hover:text-black duration-150 border",
                 className
-            }
-            onClick={() => {
-                if (onClick) {
-                    onClick();
-                }
-            }}
+            )}
+            onClick={(e) => onClick?.(e)}
         >
             {children}
         </button>
