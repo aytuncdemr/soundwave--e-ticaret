@@ -16,9 +16,9 @@ export default function AdditionalProdutcs() {
 			<div className="additional-products  grid grid-cols-1 justify-items-center md:grid-cols-2 xl:grid-cols-4 gap-8">
 				{products &&
 					products?.additionalProducts?.map(
-						(product: Product, index: number) => (
+						(product: Product) => (
 							<ProductCard
-								key={index}
+								key={product.shortName}
 								product={product}
 							></ProductCard>
 						)

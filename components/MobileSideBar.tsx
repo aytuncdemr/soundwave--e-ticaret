@@ -18,7 +18,7 @@ export default function MobileSideBar({
     const userContext = useContext(UserContext);
 
     return (
-        <div className="mobile-side-bar md:hidden animate-mobileSideBarSlideRight absolute max-w-[90%] w-[90%] max-h-screen h-full bg-[rgba(0,0,0,0.9)] backdrop-blur text-white left-0 top-0 p-6">
+        <aside className="mobile-side-bar md:hidden animate-mobileSideBarSlideRight absolute max-w-[90%] w-[90%] max-h-screen h-full bg-[rgba(0,0,0,0.88)] backdrop-blur text-white left-0 top-0 p-6">
             <div className="mobile-nav-container h-full flex flex-col gap-10">
                 <div className="flex items-center justify-between text-2xl">
                     <h1 className="font-bold">SoundWave</h1>
@@ -27,10 +27,10 @@ export default function MobileSideBar({
                         onClick={closeMobileNav}
                     ></FontAwesomeIcon>
                 </div>
-                <ul className="flex flex-col gap-8 text-md flex-grow">
+                <ul className="flex flex-col gap-7 flex-grow text-xl">
                     <li>
                         <Link
-                            className={`${pathName === "/" && "text-gray-400"}`}
+                            className={`${pathName === "/" && "text-gray-500"}`}
                             href={"/"}
                             onClick={closeMobileNav}
                         >
@@ -41,7 +41,7 @@ export default function MobileSideBar({
                         <li>
                             <Link
                                 className={`${
-                                    pathName === "/giris-yap" && "text-gray-400"
+                                    pathName === "/giris-yap" && "text-gray-500"
                                 }`}
                                 href={"/giris-yap"}
                                 onClick={closeMobileNav}
@@ -54,7 +54,7 @@ export default function MobileSideBar({
                     <li>
                         <Link
                             className={`${
-                                pathName === "/urunler" && "text-gray-400"
+                                pathName === "/urunler" && "text-gray-500"
                             }`}
                             onClick={closeMobileNav}
                             href={"/urunler"}
@@ -67,11 +67,11 @@ export default function MobileSideBar({
                             <li>
                                 <Link
                                     className={`${
-                                        pathName === "/profil" &&
-                                        "text-gray-400"
+                                        pathName === "/hesabim" &&
+                                        "text-gray-500"
                                     }`}
                                     onClick={closeMobileNav}
-                                    href={"/profil"}
+                                    href={"/hesabim"}
                                 >
                                     Hesabım
                                 </Link>
@@ -81,7 +81,7 @@ export default function MobileSideBar({
                     <li>
                         <Link
                             className={`${
-                                pathName === "/iletisim" && "text-gray-400"
+                                pathName === "/iletisim" && "text-gray-500"
                             }`}
                             onClick={closeMobileNav}
                             href={"/iletisim"}
@@ -98,8 +98,8 @@ export default function MobileSideBar({
                     )}
 
                     <li className="mt-auto">
-                        <p className="text-center">
-                            2025 Soundwave -{" "}
+                        <p className="text-center text-sm">
+                            @2025 Soundwave -{" "}
                             <Link
                                 onClick={closeMobileNav}
                                 href={"/gizlilik-politikasi"}
@@ -107,10 +107,12 @@ export default function MobileSideBar({
                             >
                                 Gizlilik Politikası
                             </Link>
+                            <br />
+                            (Tüm hakları saklıdır.)
                         </p>
                     </li>
                 </ul>
             </div>
-        </div>
+        </aside>
     );
 }

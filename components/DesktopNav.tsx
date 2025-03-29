@@ -14,8 +14,8 @@ export default function DesktopNav() {
                     <li>
                         <Link
                             className={`${
-                                pathName === "/" && "text-gray-400"
-                            } hover:text-gray-400 duration-150`}
+                                pathName === "/" && "text-gray-500"
+                            } hover:text-gray-500 duration-150`}
                             href={"/"}
                         >
                             Anasayfa
@@ -25,8 +25,8 @@ export default function DesktopNav() {
                     <li>
                         <Link
                             className={`${
-                                pathName === "/urunler" && "text-gray-400"
-                            } hover:text-gray-400 duration-150`}
+                                pathName === "/urunler" && "text-gray-500"
+                            } hover:text-gray-500 duration-150`}
                             href={"/urunler"}
                         >
                             Ürünlerimiz
@@ -36,8 +36,8 @@ export default function DesktopNav() {
                     <li>
                         <Link
                             className={`${
-                                pathName === "/iletisim" && "text-gray-400"
-                            } hover:text-gray-400 duration-150`}
+                                pathName === "/iletisim" && "text-gray-500"
+                            } hover:text-gray-500 duration-150`}
                             href={"/iletisim"}
                         >
                             İletişim
@@ -54,34 +54,36 @@ export default function DesktopNav() {
                         <Link
                             className={`${
                                 userContext?.user &&
-                                pathName === "/profil" &&
-                                "text-gray-400"
+                                pathName === "/hesabim" &&
+                                "text-gray-500"
                             } ${
                                 !userContext?.user &&
                                 pathName === "/giris-yap" &&
-                                "text-gray-400"
-                            } hover:text-gray-400 duration-150`}
-                            href={userContext?.user ? "/profil" : "/giris-yap"}
+                                "text-gray-500"
+                            } hover:text-gray-500 duration-150`}
+                            href={userContext?.user ? "/hesabim" : "/giris-yap"}
                         >
-                            {userContext?.user ? "Profilim" : "Giriş Yap"}
+                            {userContext?.user ? "Hesabım" : "Giriş Yap"}
                         </Link>
                     </li>
                     <li>
                         <Link
                             className={`${
-                                pathName === "/sepetim" && "text-gray-400"
-                            } hover:text-gray-400 duration-150`}
+                                pathName === "/sepetim" && "text-gray-500"
+                            } hover:text-gray-500 duration-150`}
                             href={"/sepetim"}
                         >
-                            Sepetim ({userContext?.user?.bucket.length || 0})
+                            Sepetim{" "}
+                            {(userContext?.user?.bucket?.length || 0) > 0 &&
+                                `(${userContext?.user?.bucket.length})`}
                         </Link>
                     </li>
                     <li>
                         <Link
                             className={`${
                                 pathName === "/sikca-sorulan-sorular" &&
-                                "text-gray-400"
-                            } hover:text-gray-400 duration-150`}
+                                "text-gray-500"
+                            } hover:text-gray-500 duration-150`}
                             href={"/sikca-sorulan-sorular"}
                         >
                             S.S.S

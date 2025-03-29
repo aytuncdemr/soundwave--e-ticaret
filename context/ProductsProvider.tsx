@@ -1,43 +1,58 @@
 "use client";
 
 import { type Product } from "@/interfaces/Product";
+import axios, { isAxiosError } from "axios";
 import { createContext, useEffect, useState } from "react";
 
-export interface ProductsContextInterface {
-	droneProducts: Product[] | null;
-	additionalProducts: Product[] | null;
+interface ProductsContextInterface {
+    droneProducts: Product[];
+    additionalProducts: Product[];
 }
 
 export const ProductsContext = createContext<ProductsContextInterface | null>(
-	null
+    null
 );
 
 export default function ProductsProvider({
-	children,
+    children,
 }: {
-	children: React.ReactNode;
+    children: React.ReactNode;
 }) {
-	const [products, setProducts] = useState<ProductsContextInterface | null>(
-		null
-	);
-	useEffect(() => {
-		(async function () {
-			const response = await fetch("/api/mongodb?collection=products");
-			const products = (await response.json()) as [
-				ProductsContextInterface
-			];
-			setProducts(...products);
-		})();
-	}, []);
+    const [products, setProducts] = useState<ProductsContextInterface | null>(
+        null
+    );
+    useEffect(() => {
+        try {
+            async function getProducts() {
+                const { data } = await axios.get("/api/products");
 
-	return (
-		<ProductsContext.Provider
-			value={{
-				droneProducts: products?.droneProducts || null,
-				additionalProducts: products?.additionalProducts || null,
-			}}
-		>
-			{products ? children : null}
-		</ProductsContext.Provider>
-	);
+                setProducts(data);
+            }
+
+            getProducts();
+        } catch (error) {
+            if (isAxiosError(error)) {
+                console.log(error.response?.data.message || error.message);
+            } else if (error instanceof Error) {
+                console.log(error.message);
+            } else {
+                console.log(error);
+            }
+        }
+    }, []);
+
+    if (!products || !products?.droneProducts || !products.additionalProducts) {
+        return;
+    }
+
+    return (
+        <ProductsContext.Provider
+            value={{
+                droneProducts: products.droneProducts,
+                additionalProducts: products.additionalProducts,
+            }}
+        >
+            {children}
+        </ProductsContext.Provider>
+    );
 }

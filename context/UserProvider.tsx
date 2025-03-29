@@ -2,7 +2,6 @@
 
 import { type Product } from "@/interfaces/Product";
 import { type User } from "@/interfaces/User";
-
 import { createContext, useReducer } from "react";
 
 type ActionType = keyof User | "setUser" | "logOut" | "updateUser";
@@ -35,6 +34,7 @@ export default function UserProvider({
             payload: PayloadType;
         }
     ) {
+        
         if (!prevUser || action.type === "setUser") {
             return action.payload as User;
         }

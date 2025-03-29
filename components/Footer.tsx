@@ -18,44 +18,43 @@ export default function Footer() {
         if (inputRef.current) {
             inputRef.current.blur();
         }
-        setResponse(null);
-        setEmail(null);
-        setIsSending(true);
 
         try {
-            const { data } = await axios.post("/api/iletisim", {
+            setResponse(null);
+            setEmail(null);
+            setIsSending(true);
+
+            const {
+                data: { message },
+            } = await axios.post("/api/iletisim", {
                 email,
                 isNotificationAllow: true,
             });
-            setResponse(data.message);
+            setResponse(message);
         } catch (error) {
             if (axios.isAxiosError(error)) {
                 setResponse(error.response?.data.message || error.message);
             } else if (error instanceof Error) {
                 setResponse(error.message);
-            } else {
-                setResponse((error as { message: string }).message);
             }
         } finally {
             setIsSending(false);
-            setTimeout(() =>{
-
+            setTimeout(() => {
                 setResponse(null);
-
-            },3000);
+            }, 3000);
         }
     }
 
     return (
         <footer className="bg-black py-8 px-4">
-            <div className="footer-container text-white flex flex-col gap-4 max-w-[25rem] mx-auto justify-center">
+            <div className="footer-container text-white flex flex-col gap-6 max-w-[25rem] mx-auto justify-center">
                 <h2 className="text-center text-xl md:text-2xl">
                     Kampanyalarımızdan <br /> Haberdar Olun!
                 </h2>
 
                 <form
                     onSubmit={allowNotificationsHandler}
-                    className="flex items-center p-3  border border-gray-700 mb-6"
+                    className="flex items-center p-3 rounded-sm  border border-gray-700 mb-6"
                 >
                     <input
                         onChange={(e) => setEmail(e.target.value)}
@@ -66,10 +65,7 @@ export default function Footer() {
                         className="flex-1 lg:text-xl border-none bg-black outline-none"
                         ref={inputRef}
                     />
-                    <button
-                        className="hover:cursor-pointer hover:text-gray-500 duration-150 text-xl"
-                        type="submit"
-                    >
+                    <button className="hover:cursor-pointer hover:text-gray-500 duration-150 text-xl">
                         <FontAwesomeIcon
                             icon={faChevronRight}
                         ></FontAwesomeIcon>
@@ -87,7 +83,7 @@ export default function Footer() {
                 )}
 
                 <p id="kampanyalar" className="text-sm text-center">
-                    @2024 Soundwave -{" "}
+                    @2025 Soundwave -{" "}
                     <Link
                         className="underline underline-offset-2 decoration-[rgb(177,174,174)] hover:text-gray-300 duration-150"
                         href={"/gizlilik-politikasi"}

@@ -10,44 +10,47 @@ const transporter = nodemailer.createTransport({
 });
 
 async function sendEmail(formData: ContactData) {
-    const mailOptions = {
-        from: `"${formData.name || formData.email}" <${formData.email}>`,
-        to: process.env.EMAIL,
-        subject: `${
-            formData.name || formData.email
-        }'dan gelen iletişim formu <SoundWave>`,
-        text: `Mesaj: ${
+    const mail = {
+        from: `"${formData.email}"`,
+        to: "soundwaveskyinfo@gmail.com",
+
+        subject: `${formData.name || formData.email} iletişim formu`,
+        text: `E-mail:${formData.email}\nMesaj: ${
             formData.isNotificationAllow
                 ? formData.email + " kampanyalardan haberdar olmak istiyor."
-                : formData.message
-        }\nE-mail:${formData.email}\nTelefon Numarası: ${
-            formData.phoneNumber || ""
-        }`,
-        html: `<p><strong>Mesaj:</strong> ${
+                : formData.message || ""
+        }\nTelefon Numarası: ${formData.phoneNumber || ""}`,
+        html: `<p>E-mail: <strong>${formData.email}</strong></p>
+        <p>Telefon Numarası: ${formData.phoneNumber || ""}</p>
+        <p>Mesaj: ${
             formData.isNotificationAllow
                 ? formData.email + " kampanyalardan haberdar olmak istiyor."
-                : formData.message
-        }</p>
-               <p><strong>Telefon Numarası:</strong> ${
-                   formData.phoneNumber || ""
-               }</p>
-			   <p><strong>E-mail:</strong> ${formData.email}</p>`,
+                : formData.message || ""
+        }</p>`,
     };
 
-    await transporter.sendMail(mailOptions);
+    await transporter.sendMail(mail);
 }
 
 export async function POST(request: Request) {
     try {
-        const formData = (await request.json()) as ContactData;
+        const body: ContactData = await request.json();
+        if (!body.email) {
+            return new Response(
+                JSON.stringify({
+                    message: "Lütfen bir e-posta adresi gönderiniz.",
+                }),
+                { status: 404 }
+            );
+        }
 
-        await sendEmail(formData);
+        await sendEmail(body);
 
         return new Response(
             JSON.stringify({
                 message: `${
-                    formData.isNotificationAllow ? "Talebiniz" : "Mesajınız"
-                } başarıyla gönderilmiştir`,
+                    body.isNotificationAllow ? "Talebiniz" : "Mesajınız"
+                } başarıyla gönderilmiştir.`,
             }),
             { status: 200 }
         );
@@ -64,7 +67,7 @@ export async function POST(request: Request) {
                 JSON.stringify({
                     message: "Bir şeyler ters gitti.",
                 }),
-                { status: 400 }
+                { status: 500 }
             );
         }
     }

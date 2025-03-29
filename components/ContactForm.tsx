@@ -4,6 +4,8 @@ import { type ContactData } from "@/interfaces/ContactData";
 import { UserContext } from "@/context/UserProvider";
 import { useContext, useReducer, useState } from "react";
 import { ThreeDot } from "react-loading-indicators";
+import Button from "./Button";
+import axios, { isAxiosError } from "axios";
 
 export default function ContactForm() {
     const userContext = useContext(UserContext);
@@ -37,30 +39,19 @@ export default function ContactForm() {
 
     async function submitHandler(e: React.FormEvent) {
         e.preventDefault();
-        setIsSending(true);
-        setSuccess(null);
-        setError(null);
+
         try {
-            if (
-                contactData.email &&
-                contactData.message &&
-                contactData.name &&
-                contactData.phoneNumber
-            ) {
-                const response = await fetch("/api/iletisim", {
-                    method: "POST",
-                    body: JSON.stringify(contactData),
-                });
-                const message = await response.json();
-                if (!response.ok) {
-                    throw message;
-                }
-                setError(null);
-                setSuccess(message);
-            }
-        } catch (message: unknown) {
-            setError(message as string);
+            setIsSending(true);
             setSuccess(null);
+            setError(null);
+            const { data } = await axios.post("/api/iletisim", contactData);
+            setSuccess(data.message);
+        } catch (error) {
+            if (isAxiosError(error)) {
+                setError(error.response?.data.message || error.message);
+            } else if (error instanceof Error) {
+                setError(error.message);
+            }
         } finally {
             setIsSending(false);
             dispatch({ type: "reset", payload: "none" });
@@ -71,7 +62,6 @@ export default function ContactForm() {
         <form onSubmit={submitHandler} className="flex flex-col gap-2 xl:gap-3">
             <input
                 type="text"
-                id="name"
                 placeholder="İsim"
                 required
                 value={contactData.name || ""}
@@ -82,7 +72,6 @@ export default function ContactForm() {
             />
             <input
                 type="email"
-                id="email"
                 placeholder="E-posta"
                 value={contactData.email || ""}
                 required
@@ -93,7 +82,6 @@ export default function ContactForm() {
             />
             <input
                 type="tel"
-                id="phoneNumber"
                 value={contactData.phoneNumber || ""}
                 placeholder="Telefon Numarası"
                 required
@@ -107,7 +95,6 @@ export default function ContactForm() {
                 }}
             />
             <textarea
-                id="message"
                 value={contactData.message || ""}
                 placeholder="Mesajınız"
                 required
@@ -117,14 +104,14 @@ export default function ContactForm() {
                 }
             />
 
-            <button
-                type={isSending ? "button" : "submit"}
-                className={`bg-black hover:bg-white hover:text-black duration-150 border border-black text-white py-2 text-lg xl:text-xl ${
-                    isSending && "bg-gray-800"
+            <Button
+                className={`py-2 ${
+                    isSending && "bg-gray-500 pointer-events-none"
                 }`}
+                type={isSending ? "button" : "submit"}
             >
                 Gönder
-            </button>
+            </Button>
             {isSending && (
                 <div className="flex justify-center py-3">
                     <ThreeDot color="#000000" size="medium" />

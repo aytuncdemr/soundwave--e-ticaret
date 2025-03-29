@@ -36,42 +36,53 @@ export default function MobileNav() {
     }
 
     return (
-        <nav className="mobile-nav flex items-center justify-between md:hidden">
-            {" "}
-            <FontAwesomeIcon
-                icon={faBars}
-                onClick={openMobileSideBar}
-                className="text-xl"
-            ></FontAwesomeIcon>
-            <Link className="text-2xl lg:text-3xl" href={"/"}>
-                SoundWave
-            </Link>
-            <div className="flex items-center gap-3">
-                <Link href={userContext?.user ? "/profil" : "/giris-yap"}>
+        <nav className="mobile-nav md:hidden">
+            <ul className="flex items-center justify-between ">
+                <li>
                     <FontAwesomeIcon
-                        icon={
-                            userContext?.user ? faUser : faArrowRightToBracket
-                        }
-                        className={`text-xl ${
-                            pathName === "/profil" &&
-                            userContext?.user &&
-                            "text-gray-400"
-                        } ${
-                            pathName === "/giris-yap" &&
-                            !userContext?.user &&
-                            "text-gray-400"
-                        }`}
+                        icon={faBars}
+                        onClick={openMobileSideBar}
+                        className="text-xl"
                     ></FontAwesomeIcon>
-                </Link>
-                <Link href={"/sepetim"}>
-                    <FontAwesomeIcon
-                        icon={faCartShopping}
-                        className={`text-xl ${
-                            pathName === "/sepetim" && "text-gray-400"
-                        }`}
-                    ></FontAwesomeIcon>
-                </Link>
-            </div>
+                </li>
+                <li>
+                    <Link className="text-2xl" href={"/"}>
+                        SoundWave
+                    </Link>
+                </li>
+                <li>
+                    <div className="flex items-center gap-3">
+                        <Link
+                            href={userContext?.user ? "/hesabim" : "/giris-yap"}
+                        >
+                            <FontAwesomeIcon
+                                icon={
+                                    userContext?.user
+                                        ? faUser
+                                        : faArrowRightToBracket
+                                }
+                                className={`text-xl ${
+                                    pathName === "/hesabim" &&
+                                    userContext?.user &&
+                                    "text-gray-500"
+                                } ${
+                                    pathName === "/giris-yap" &&
+                                    !userContext?.user &&
+                                    "text-gray-500"
+                                }`}
+                            ></FontAwesomeIcon>
+                        </Link>
+                        <Link href={"/sepetim"}>
+                            <FontAwesomeIcon
+                                icon={faCartShopping}
+                                className={`text-xl ${
+                                    pathName === "/sepetim" && "text-gray-500"
+                                }`}
+                            ></FontAwesomeIcon>
+                        </Link>
+                    </div>
+                </li>
+            </ul>
             {mobileSideBarOpen &&
                 createPortal(
                     <MobileSideBar

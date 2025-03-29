@@ -1,6 +1,6 @@
 import { Product } from "@/interfaces/Product";
 
-export default function groupBucket(bucket: Product[] | null) {
+export default function groupBucket(bucket: Product[] | null | undefined) {
     if (!bucket) {
         return null;
     }

@@ -1,23 +1,26 @@
-import { MongoClient, MongoClientOptions } from "mongodb";
+import { MongoClient, Db } from "mongodb";
 
-const uri: string | undefined = process.env.MONGODB_URI;
-if (!uri) {
-	throw new Error("Please add your MongoDB URI to .env.local");
+const MONGODB_URI = process.env.MONGODB_URI;
+if (!MONGODB_URI) {
+    throw new Error(
+        "Please define the MONGO_URI environment variable inside .env.local"
+    );
 }
 
-const options: MongoClientOptions = {};
+const client = new MongoClient(MONGODB_URI);
 
-let client: MongoClient;
-let mongodbClient: Promise<MongoClient>;
+let cachedClient: MongoClient | null = null;
+let cachedDb: Db | null = null;
 
-if (process.env.NODE_ENV === "development") {
-	let clientPromise: Promise<MongoClient> | undefined;
-	client = new MongoClient(uri, options);
-	clientPromise = client.connect();
-	mongodbClient = clientPromise;
-} else {
-	client = new MongoClient(uri, options);
-	mongodbClient = client.connect();
+export async function mongodb() {
+    if (!cachedClient || !cachedDb) {
+        await client.connect();
+        cachedClient = client;
+        cachedDb = client.db("soundwave");
+    }
+
+    const users = cachedDb.collection("users");
+    const products = cachedDb.collection("products");
+
+    return { db: cachedDb, client: cachedClient, users, products };
 }
-
-export default mongodbClient;

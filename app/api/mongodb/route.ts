@@ -1,5 +1,5 @@
 import { User } from "@/interfaces/User";
-import mongodbClient from "@/utils/mongodb";
+import { mongodb } from "@/utils/mongodb";
 import { ObjectId } from "mongodb";
 
 export async function GET(request: Request) {
@@ -14,11 +14,7 @@ export async function GET(request: Request) {
         });
     }
 
-    const database = (await mongodbClient).db(
-        process.env.MONGODB_DB_NAME as string
-    );
-
-    const collection = database.collection(collectionName);
+    const collection = (await mongodb()).db.collection(collectionName);
 
     const data = await collection
         .find(
