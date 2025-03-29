@@ -40,13 +40,12 @@ export async function POST(request: Request) {
         if (!data) {
             return new Response("Invalid data", { status: 400 });
         }
-        const database = (await mongodbClient).db(
-            process.env.MONGODB_DB_NAME as string
-        );
-        const collection = database.collection("users");
+        
+        const {users} = await mongodb();
+
         const { _id, ...updateData } = data;
 
-        const result = await collection.findOneAndUpdate(
+        const result = await users.findOneAndUpdate(
             { _id: new ObjectId(_id) },
             { $set: updateData },
             { returnDocument: "after" } // Return updated document
