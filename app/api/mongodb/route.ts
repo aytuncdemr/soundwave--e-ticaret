@@ -1,6 +1,4 @@
-import { User } from "@/interfaces/User";
 import { mongodb } from "@/utils/mongodb";
-import { ObjectId } from "mongodb";
 
 export async function GET(request: Request) {
     const url = new URL(request.url);

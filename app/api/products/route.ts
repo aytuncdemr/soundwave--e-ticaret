@@ -1,5 +1,4 @@
 import { mongodb } from "@/utils/mongodb";
-import { ObjectId } from "mongodb";
 
 export async function GET() {
     try {
