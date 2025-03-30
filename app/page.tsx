@@ -20,7 +20,7 @@ export default function Home() {
                 <DroneProducts></DroneProducts>
             </section>
             <section className="additional-products-section">
-                <AdditionalProdutcs></AdditionalProdutcs>
+                {/* <AdditionalProdutcs></AdditionalProdutcs> */}
             </section>
         </>
     );
