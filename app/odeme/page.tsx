@@ -41,7 +41,7 @@ export default function PaymentPage() {
 	return (
 		<section className="pay-section">
 			{error && (
-				<p className="text-red-500 text-center text-2xl">{error}</p>
+				<p className="text-center text-2xl">{error}</p>
 			)}
 		</section>
 	);

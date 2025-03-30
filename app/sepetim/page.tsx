@@ -103,7 +103,7 @@ export default function BasketPage() {
                                 icon={faShoppingBag}
                             ></FontAwesomeIcon>
                             <Link
-                                href={"/urunler"}
+                                href={"/urunler/dronelar"}
                                 className="text-2xl xl:text-3xl underline hover:text-gray-500 duration-150"
                             >
                                 Ürünlerimizi görmek <br /> için tıklayın.

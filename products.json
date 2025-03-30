@@ -1,0 +1,92 @@
+{
+    "additionalProducts": [
+        {
+            "name": "SoundWave Mini 2 Fly More Combo Yedek Batarya",
+            "shortName": "Mini 2",
+            "price": { "$numberInt": "749" },
+            "imgPaths": ["/mini2flymorecombobattery.webp"],
+            "stockAmount": { "$numberInt": "20" },
+            "link": "/urunler/soundwave-mini-2-batarya",
+            "category": "Yedek Parçalar"
+        },
+        {
+            "name": "SoundWave Mini 2 Fly More Combo Yedek Batarya 2 Adet",
+            "shortName": "Mini 2 Yedek Batarya",
+            "price": { "$numberInt": "1399" },
+            "imgPaths": ["/mini2FlyMoreCombo2Batarya.png"],
+            "stockAmount": { "$numberInt": "20" },
+            "link": "/urunler/soundwave-mini-2-batarya-2",
+            "category": "Yedek Parçalar"
+        },
+        {
+            "name": "Mini 2 Fly More Combo Yedek Pervane x4",
+            "shortName": "Mini 2 Yedek Pervane",
+            "price": { "$numberInt": "599" },
+            "imgPaths": ["/mini2FlyMoreComboKanat.avif"],
+            "stockAmount": { "$numberInt": "20" },
+            "link": "/urunler/soundwave-mini-2-pervane",
+            "category": "Yedek Parçalar"
+        }
+    ],
+    "droneProducts": [
+        {
+            "name": "SoundWave Mini 2 Fly More Combo –drone 2 Batarya 40dk Uçuş Süresi Hd Kamera Beni Takip Et Mod Taşıma Çanta",
+            "price": { "$numberInt": "3899" },
+            "shortName": "Mini 2 Combo",
+            "category": "Dronelar",
+            "imgPaths": ["/mini-2-combo-1.webp", "/mini-2-combo-2.webp"],
+            "stockAmount": { "$numberInt": "20" },
+            "link": "/urunler/soundwave-mini-2-combo"
+        },
+        {
+            "name": "SoundWave Mini 2 Siyah - Drone Full Hd Kamera Beni Takip Et Mod Taşıma Çanta 3 Yıl Garantili",
+            "price": { "$numberInt": "3499" },
+            "shortName": "Mini 2 Siyah",
+            "category": "Dronelar",
+            "imgPaths": ["/mini-2-siyah-1.webp", "/mini-2-siyah-2.webp"],
+            "stockAmount": { "$numberInt": "20" },
+            "link": "/urunler/soundwave-mini-2-siyah"
+        },
+        {
+            "name": "SoundWave Mini Drone - Kameralı Taşıma çantalı havadan görüntü aktarabilen katlanabilen drone 3 Yıl garantili",
+            "price": { "$numberInt": "2599" },
+            "shortName": "Mini",
+            "category": "Dronelar",
+            "imgPaths": ["/mini-1.webp", "/mini-2.webp", "/mini-3.webp"],
+            "stockAmount": { "$numberInt": "20" },
+            "link": "/urunler/soundwave-mini"
+        },
+        {
+            "name": "SoundWave Mini 3 Plus Gps Drone Haritalar Beni Takip Et Mod Taşıma Çanta Oto Eve Dön 1 Batarya Ile 20dk Uçuş",
+            "price": { "$numberInt": "4799" },
+            "shortName": "Mini 3 Plus",
+            "category": "Dronelar",
+            "imgPaths": [
+                "/mini-3-1.webp",
+                "/mini-3-2.webp",
+                "/mini-3-3.webp",
+                "/mini-3-4.webp"
+            ],
+            "stockAmount": { "$numberInt": "20" },
+            "link": "/urunler/soundwave-mini-3-plus"
+        },
+        {
+            "name": "SoundWave Mini 2 - Drone Full Hd Kamera Beni Takip Et Mod Taşıma Çanta 3 Yıl Garantili",
+            "price": { "$numberInt": "3499" },
+            "imgPaths": ["/mini-2-1.webp", "/mini-2-2.webp"],
+            "stockAmount": { "$numberInt": "20" },
+            "category": "Dronelar",
+            "shortName": "Mini 2",
+            "link": "/urunler/soundwave-mini-2"
+        },
+        {
+            "name": "SoundWave Mini X Drone - Kameralı Taşıma çantalı havadan görüntü aktarabilen katlanabilen drone 3 Yıl garanti",
+            "price": { "$numberInt": "2299" },
+            "shortName": "Mini X",
+            "category": "Dronelar",
+            "imgPaths": ["/mini-x-1.webp", "/mini-x-2.webp"],
+            "stockAmount": { "$numberInt": "20" },
+            "link": "/urunler/soundwave-mini-x"
+        }
+    ]
+}

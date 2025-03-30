@@ -11,7 +11,7 @@ export default function ExampleProduct() {
 
     const products = useContext(ProductsContext);
     const product = products?.droneProducts?.find(
-        (product) => product.link === "/urunler/soundwave-mini-3"
+        (product) => product.link === "/urunler/soundwave-mini-3-plus"
     ) as Product;
 
     return (
@@ -36,7 +36,7 @@ export default function ExampleProduct() {
                 <h2 className="text-3xl lg:text-5xl hidden lg:block">
                     Yeni {product?.shortName}
                 </h2>
-                <p className="text-lg lg:text-xl font-thin lg:mt-4 text-gray-500 px-2">
+                <p className="text-lg  lg:text-2xl font-thin lg:mt-4 text-gray-500 px-2">
                     Hafif, taşınabilir ve kullanıcı dostu bir drone paketidir.
                     Full HD video çekimi, 4 km&apos;ye kadar iletim mesafesi ve
                     26 dakikalık uçuş süresi gibi özelliklerle, hem hobi amaçlı

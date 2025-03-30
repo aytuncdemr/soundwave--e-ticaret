@@ -49,7 +49,7 @@ export default function ProductsProvider({
         <ProductsContext.Provider
             value={{
                 droneProducts: products.droneProducts,
-                additionalProducts: products.additionalProducts,
+                additionalProducts: [], //products.additionalProducts,
             }}
         >
             {children}

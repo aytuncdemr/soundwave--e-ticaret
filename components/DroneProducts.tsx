@@ -18,7 +18,7 @@ export default function DroneProducts({
             }`}
         >
             <h2 className="text-4xl md:text-5xl mb-12  text-center  xl:text-start">
-                Drone Modellerimiz
+                Drone Modellerimiz ({products?.droneProducts.length})
             </h2>
 
             <div className="drone-products max-w-[96rem] grid grid-cols-1 justify-items-center md:grid-cols-2 xl:grid-cols-4 gap-8">

@@ -54,12 +54,23 @@ export default function MobileSideBar({
                     <li>
                         <Link
                             className={`${
-                                pathName === "/urunler" && "text-gray-500"
+                                pathName === "/urunler/dronelar" && "text-gray-500"
                             }`}
                             onClick={closeMobileNav}
-                            href={"/urunler"}
+                            href={"/urunler/dronelar"}
                         >
-                            Ürünlerimiz
+                            Dronelar
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            className={`${
+                                pathName === "/urunler/yedek-parcalar" && "text-gray-500"
+                            }`}
+                            onClick={closeMobileNav}
+                            href={"/urunler/yedek-parcalar"}
+                        >
+                            Yedek Parçalar
                         </Link>
                     </li>
                     {userContext?.user && (

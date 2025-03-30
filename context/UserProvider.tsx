@@ -34,11 +34,23 @@ export default function UserProvider({
             payload: PayloadType;
         }
     ) {
-        
         if (!prevUser || action.type === "setUser") {
             return action.payload as User;
         }
         if (action.type === "addresses") {
+            (async function () {
+                try {
+                    await fetch("/api/mongodb", {
+                        method: "POST",
+                        body: JSON.stringify({
+                            ...prevUser,
+                        }),
+                    });
+                } catch (error) {
+                    console.log("Error user is not updated:", error);
+                }
+            });
+
             return {
                 ...prevUser,
                 [action.type]: [
@@ -70,7 +82,7 @@ export default function UserProvider({
                 } catch (error) {
                     console.log("Error user is not updated:", error);
                 }
-            })();
+            });
 
             return { ...prevUser };
         }

@@ -33,32 +33,3 @@ export async function GET(request: Request) {
         status: 500,
     });
 }
-
-export async function POST(request: Request) {
-    try {
-        const data = (await request.json()) as User;
-        if (!data) {
-            return new Response("Invalid data", { status: 400 });
-        }
-        
-        const {users} = await mongodb();
-
-        const { _id, ...updateData } = data;
-
-        const result = await users.findOneAndUpdate(
-            { _id: new ObjectId(_id) },
-            { $set: updateData },
-            { returnDocument: "after" } // Return updated document
-        );
-        if (result) {
-            return new Response("User updated", { status: 200 });
-        } else {
-            return new Response("User not found", { status: 404 });
-        }
-    } catch (error) {
-        return new Response(
-            JSON.stringify(error instanceof Error ? error.message : error),
-            { status: 500 }
-        );
-    }
-}

@@ -52,7 +52,7 @@ export default function FAQ() {
     return (
         <section className="faq-section py-24 px-4">
             <div className="faq-contanier">
-                <h2 className="text-3xl lg:text-4xl font-bold text-center mb-8 lg:mb-12">
+                <h2 className="text-3xl lg:text-4xl  text-center mb-8 lg:mb-12">
                     Sıkça Sorulan Sorular
                 </h2>
                 <div className="questions flex flex-col max-w-[42rem] mx-auto  gap-4">

@@ -134,8 +134,8 @@ export default function Product() {
                             <Link
                                 href={
                                     product?.category === "Dronelar"
-                                        ? "/urunler"
-                                        : "/urunler#additionals"
+                                        ? "/urunler/dronelar"
+                                        : "/urunler/yedek-parcalar"
                                 }
                             >{`/${product?.category}`}</Link>
                             <Link href={product.link}>

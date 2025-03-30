@@ -25,24 +25,25 @@ export default function DesktopNav() {
                     <li>
                         <Link
                             className={`${
-                                pathName === "/urunler" && "text-gray-500"
+                                pathName === "/urunler/dronelar" && "text-gray-500"
                             } hover:text-gray-500 duration-150`}
-                            href={"/urunler"}
+                            href={"/urunler/dronelar"}
                         >
-                            Ürünlerimiz
+                            Dronelar
                         </Link>
                     </li>
-
                     <li>
                         <Link
                             className={`${
-                                pathName === "/iletisim" && "text-gray-500"
+                                pathName === "/urunler/yedek-parcalar" && "text-gray-500"
                             } hover:text-gray-500 duration-150`}
-                            href={"/iletisim"}
+                            href={"/urunler/yedek-parcalar"}
                         >
-                            İletişim
+                            Yedek Parçalar
                         </Link>
                     </li>
+
+                  
                 </ul>
             </nav>
             <Link className="text-2xl lg:text-3xl" href={"/"}>
@@ -76,6 +77,16 @@ export default function DesktopNav() {
                             Sepetim{" "}
                             {(userContext?.user?.bucket?.length || 0) > 0 &&
                                 `(${userContext?.user?.bucket.length})`}
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            className={`${
+                                pathName === "/iletisim" && "text-gray-500"
+                            } hover:text-gray-500 duration-150`}
+                            href={"/iletisim"}
+                        >
+                            İletişim
                         </Link>
                     </li>
                     <li>

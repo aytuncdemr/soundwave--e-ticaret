@@ -6,7 +6,7 @@ export async function GET() {
         const { products } = await mongodb();
 
         const productDocument = await products.findOne(
-            { _id: new ObjectId("678e3e4b90c8d7e7d1dc5e12") },
+            {},
             { projection: { _id: 0 } }
         );
 

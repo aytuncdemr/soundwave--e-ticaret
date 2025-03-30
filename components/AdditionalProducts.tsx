@@ -10,7 +10,7 @@ export default function AdditionalProdutcs() {
 	return (
 		<div className="additional-products-container max-w-[75%] 2xl:max-w-[66%] mx-auto  text-black px-6 py-12">
 			<h2 className="text-4xl md:text-5xl mb-12  text-center  xl:text-start">
-				Yedek Parçalar
+				Yedek Parçalar ({products?.additionalProducts.length}) 
 			</h2>
 
 			<div className="additional-products  grid grid-cols-1 justify-items-center md:grid-cols-2 xl:grid-cols-4 gap-8">

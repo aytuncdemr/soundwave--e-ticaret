@@ -1,40 +1,34 @@
-import { LoginDataInterface } from "@/components/LoginForm";
 import { mongodb } from "@/utils/mongodb";
 
 export async function POST(request: Request) {
     try {
-        const formData = (await request.json()) as LoginDataInterface;
-        if (!formData.email || !formData.password) {
-            return new Response(
-                JSON.stringify({ error: "Lütfen tüm boşlukları doldurunuz" }),
-                { status: 400, headers: { "Content-Type": "application/json" } }
-            );
-        }
+        const body = await request.json();
 
         const { users } = await mongodb();
 
-        const user = await users.findOne(formData, {
+        const user = await users.findOne(body, {
             projection: {
                 password: 0,
             },
         });
-        if (user) {
-            return new Response(JSON.stringify(user), {
-                status: 200,
-                headers: { "Content-Type": "application/json" },
+        if (!user) {
+            return new Response(
+                JSON.stringify({ message: "Hatalı e-posta veya şifre." }),
+                { status: 404 }
+            );
+        }
+
+        return new Response(JSON.stringify(user), { status: 200 });
+    } catch (error) {
+        if (error instanceof Error) {
+            return new Response(JSON.stringify({ message: error.message }), {
+                status: 500,
             });
         } else {
-            return new Response(JSON.stringify("Hatalı e-posta veya şifre"), {
-                status: 404,
-            });
+            return new Response(
+                JSON.stringify({ message: "Bir şeyler ters gitti." }),
+                { status: 500 }
+            );
         }
-    } catch (error) {
-        return new Response(
-            JSON.stringify(error instanceof Error ? error.message : error),
-            {
-                status: 500,
-                headers: { "Content-Type": "application/json" },
-            }
-        );
     }
 }

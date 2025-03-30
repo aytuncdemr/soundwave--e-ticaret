@@ -8,7 +8,6 @@ import { FormEvent, useContext, useState } from "react";
 import { toast } from "react-toastify";
 
 export default function ProfilePage() {
-    
     const router = useRouter();
     const userContext = useContext(UserContext);
     const [initialUserInfo, setInitialUserInfo] = useState(userContext?.user);
@@ -25,20 +24,19 @@ export default function ProfilePage() {
                 payload: newAddress,
             });
         }
-        userContext?.dispatch({ type: "updateUser", payload: "none" });
         setInitialUserInfo(userContext?.user);
     }
 
     async function sendPasswordRenew() {
         try {
-            await axios.post("/api/sifre-yenile", {
+            const { data } = await axios.post("/api/sifre-yenile", {
                 email: userContext?.user?.email,
                 _id: userContext?.user?._id,
             });
 
             toast.success(
                 <p className="lg:text-lg lg:py-2 lg:px-4 text-center xl:w-[]">
-                    Değişiklikler başarıyla kaydeildi
+                    {data.message}
                 </p>,
                 {
                     className:
@@ -49,7 +47,7 @@ export default function ProfilePage() {
             if (isAxiosError(error)) {
                 toast.error(
                     <p className="lg:text-lg lg:py-2 lg:px-4 text-center xl:w-[]">
-                        {error.response?.data.message}
+                        {error.response?.data.message || error.message}
                     </p>,
                     {
                         className:
@@ -90,7 +88,7 @@ export default function ProfilePage() {
                                 className="border py-1 px-1 outline-1 outline-gray-200"
                                 type="text"
                                 id="name"
-                                value={userContext?.user?.name}
+                                value={userContext?.user?.name || ""}
                                 disabled={!isEditing}
                                 onChange={(e) =>
                                     userContext?.dispatch({
@@ -106,8 +104,8 @@ export default function ProfilePage() {
                                 className="border py-1 px-1 outline-1 outline-gray-200"
                                 type="email"
                                 id="email"
-                                value={userContext?.user?.email}
-                                disabled={true}
+                                value={userContext?.user?.email || ""}
+                                disabled
                                 onChange={(e) =>
                                     userContext?.dispatch({
                                         type: "email",
@@ -123,9 +121,9 @@ export default function ProfilePage() {
                             <input
                                 maxLength={11}
                                 className="border py-1 px-1 outline-1 outline-gray-200"
-                                type="text"
+                                type="tel"
                                 id="phoneNumber"
-                                value={userContext?.user?.phoneNumber}
+                                value={userContext?.user?.phoneNumber || ""}
                                 disabled={!isEditing}
                                 onChange={(e) => {
                                     e.target.value = e.target.value.replace(
@@ -145,7 +143,7 @@ export default function ProfilePage() {
                                 className="border py-1 px-1 outline-1 outline-gray-200"
                                 type="text"
                                 id="registeredAt"
-                                value={userContext?.user?.registeredAt}
+                                value={userContext?.user?.registeredAt || ""}
                                 disabled
                             />
                         </div>
@@ -154,14 +152,10 @@ export default function ProfilePage() {
                                 Adreslerim{" "}
                                 <button
                                     type="button"
-                                    className={`text-blue-600 underline ${
-                                        isEditing && "text-black no-underline"
-                                    }`}
-                                    onClick={() => {
-                                        setIsEditing(true);
-                                    }}
+                                    className={`border border-black ml-4 px-2 rounded-full bg-black text-white hover:text-black hover:bg-white duration-150 `}
+                                    onClick={() => setIsEditing(true)}
                                 >
-                                    (Adres Ekle)
+                                    Yeni Adres Ekle
                                 </button>
                             </label>
                             {userContext?.user?.addresses.map(
@@ -169,9 +163,9 @@ export default function ProfilePage() {
                                     return (
                                         <textarea
                                             key={index}
-                                            className="border py-1 px-1 outline-1 outline-gray-200"
+                                            className="border py-1 px-1 outline-1 min-h-[125px] outline-gray-200"
                                             id="address"
-                                            value={address}
+                                            value={address || ""}
                                             disabled
                                         />
                                     );
@@ -179,8 +173,8 @@ export default function ProfilePage() {
                             )}
                         </div>
                         {isEditing && (
-                            <>
-                                <label htmlFor="address">Yeni Adres Ekle</label>
+                            <div className="mb-4 text-lg">
+                                <label htmlFor="address">Yeni Adres</label>
                                 <textarea
                                     className="border w-full min-h-32 py-1 px-1 outline-1 outline-gray-200"
                                     id="address"
@@ -189,7 +183,7 @@ export default function ProfilePage() {
                                         setNewAddress(e.target.value);
                                     }}
                                 />
-                            </>
+                            </div>
                         )}
 
                         {!isEditing && (
@@ -197,7 +191,7 @@ export default function ProfilePage() {
                                 <button
                                     type="button"
                                     onClick={sendPasswordRenew}
-                                    className="underline text-md"
+                                    className="underline text-md mb-4"
                                 >
                                     Şifremi Unuttum
                                 </button>
@@ -206,10 +200,7 @@ export default function ProfilePage() {
 
                         {isEditing && (
                             <>
-                                <button
-                                    type={"submit"}
-                                    className="text-white mt-4 hover:bg-white border-black bg-black md:text-xl  hover:text-black duration-150 border py-2 px-2   max-w-[1/2] w-1/2 mx-auto  md:hover:bg-white md:hover:text-black"
-                                >
+                                <button className="text-white hover:bg-white border-black bg-black md:text-xl  hover:text-black duration-150 border py-2 px-2   max-w-[1/2] w-1/2 mx-auto  md:hover:bg-white md:hover:text-black">
                                     Kaydet
                                 </button>
                                 <button
@@ -224,7 +215,7 @@ export default function ProfilePage() {
                                             });
                                         }
                                     }}
-                                    className="py-2 border border-black duration-150 px-2 bg-black max-w-[1/2] w-1/2 mx-auto text-white md:hover:bg-white md:hover:text-black"
+                                    className="text-white hover:bg-white border-black bg-black md:text-xl  hover:text-black duration-150 border py-2 px-2   max-w-[1/2] w-1/2 mx-auto  md:hover:bg-white md:hover:text-black"
                                     type="button"
                                 >
                                     İptal Et

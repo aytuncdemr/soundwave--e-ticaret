@@ -1,7 +1,7 @@
 import nodemailer from "nodemailer";
 import { type ContactData } from "@/interfaces/ContactData";
 
-const transporter = nodemailer.createTransport({
+export const transporter = nodemailer.createTransport({
     service: "Gmail",
     auth: {
         user: process.env.EMAIL,
