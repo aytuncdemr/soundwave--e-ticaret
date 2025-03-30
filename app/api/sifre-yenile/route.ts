@@ -1,9 +1,19 @@
 import { isAxiosError } from "axios";
-import { transporter } from "../iletisim/route";
 import { mongodb } from "@/utils/mongodb";
 import { ObjectId } from "mongodb";
+import nodemailer from "nodemailer";
+
 
 async function sendEmail(email: string, newPassword: string) {
+    
+    const transporter = nodemailer.createTransport({
+        service: "Gmail",
+        auth: {
+            user: process.env.EMAIL,
+            pass: process.env.APP_PASSWORD,
+        },
+    });
+    
     const mailOptions = {
         from: `Soundwave SKY <www.soundwavesky.com>`,
         to: email,
@@ -13,6 +23,7 @@ async function sendEmail(email: string, newPassword: string) {
     };
 
     await transporter.sendMail(mailOptions);
+    transporter.close();
 }
 
 function generateSecurePassword() {

@@ -1,15 +1,15 @@
 import nodemailer from "nodemailer";
 import { type ContactData } from "@/interfaces/ContactData";
 
-export const transporter = nodemailer.createTransport({
-    service: "Gmail",
-    auth: {
-        user: process.env.EMAIL,
-        pass: process.env.APP_PASSWORD,
-    },
-});
-
 async function sendEmail(formData: ContactData) {
+    const transporter = nodemailer.createTransport({
+        service: "Gmail",
+        auth: {
+            user: process.env.EMAIL,
+            pass: process.env.APP_PASSWORD,
+        },
+    });
+
     const mail = {
         from: `"${formData.email}"`,
         to: "soundwaveskyinfo@gmail.com",
@@ -30,6 +30,7 @@ async function sendEmail(formData: ContactData) {
     };
 
     await transporter.sendMail(mail);
+    transporter.close();
 }
 
 export async function POST(request: Request) {
