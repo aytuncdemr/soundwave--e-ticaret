@@ -1,6 +1,5 @@
 import Banner from "@/components/Banner";
 import DroneProducts from "@/components/DroneProducts";
-import AdditionalProdutcs from "@/components/AdditionalProducts";
 import ExampleProduct from "@/components/ExampleProduct";
 import Why from "@/components/Why";
 
