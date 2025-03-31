@@ -241,8 +241,10 @@ export default function Product() {
                 <h2 className="text-3xl xl:text-4xl text-center text-gray-600">
                     SoundWave {product.shortName}
                 </h2>
-                {product?.description?.map((desc: string) => (
-                    <p className="text-gray-500 text-xl">{desc}</p>
+                {product?.description?.map((desc: string, index: number) => (
+                    <p key={index} className="text-gray-500 text-xl">
+                        {desc}
+                    </p>
                 ))}
             </div>
             <div className="flex flex-col items-center gap-4">
