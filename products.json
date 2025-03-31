@@ -1,29 +1,57 @@
 {
+    "_id": { "$oid": "67e92da95be22f510b4de611" },
     "additionalProducts": [
         {
             "name": "SoundWave Mini 2 Fly More Combo Yedek Batarya",
-            "shortName": "Mini 2",
-            "price": { "$numberInt": "749" },
-            "imgPaths": ["/mini2flymorecombobattery.webp"],
-            "stockAmount": { "$numberInt": "20" },
-            "link": "/urunler/soundwave-mini-2-batarya",
+            "shortName": "Mini 2 Combo Batarya",
+            "price": { "$numberInt": "699" },
+            "imgPaths": ["/mini-2-combo-battery.webp"],
+            "stockAmount": { "$numberInt": "0" },
+            "link": "/urunler/soundwave-mini-2-combo-batarya",
             "category": "Yedek Parçalar"
         },
         {
-            "name": "SoundWave Mini 2 Fly More Combo Yedek Batarya 2 Adet",
-            "shortName": "Mini 2 Yedek Batarya",
-            "price": { "$numberInt": "1399" },
-            "imgPaths": ["/mini2FlyMoreCombo2Batarya.png"],
-            "stockAmount": { "$numberInt": "20" },
-            "link": "/urunler/soundwave-mini-2-batarya-2",
+            "name": "SoundWave Mini 3 Plus Yedek Batarya",
+            "shortName": "Mini 3 Plus Batarya",
+            "price": { "$numberInt": "799" },
+            "imgPaths": ["/mini-2-combo-battery.webp"],
+            "stockAmount": { "$numberInt": "0" },
+            "link": "/urunler/soundwave-mini-3-plus-batarya",
             "category": "Yedek Parçalar"
         },
         {
             "name": "Mini 2 Fly More Combo Yedek Pervane x4",
+            "shortName": "Mini 2 Combo Yedek Pervane",
+            "price": { "$numberInt": "399" },
+            "imgPaths": ["/mini-2-combo-wings.webp"],
+            "stockAmount": { "$numberInt": "0" },
+            "link": "/urunler/soundwave-mini-2-combo-pervane",
+            "category": "Yedek Parçalar"
+        },
+        {
+            "name": "Mini 3 Plus Yedek Pervane x4",
+            "shortName": "Mini 3 Plus Yedek Pervane",
+            "price": { "$numberInt": "399" },
+            "imgPaths": ["/mini-2-combo-wings.webp"],
+            "stockAmount": { "$numberInt": "0" },
+            "link": "/urunler/soundwave-mini-3-combo-pervane",
+            "category": "Yedek Parçalar"
+        },
+        {
+            "name": "Mini 2 Yedek Batarya",
+            "shortName": "Mini 2 Yedek Batarya",
+            "price": { "$numberInt": "699" },
+            "imgPaths": ["/mini-2-combo-battery.webp"],
+            "stockAmount": { "$numberInt": "0" },
+            "link": "/urunler/soundwave-mini-2-batarya",
+            "category": "Yedek Parçalar"
+        },
+        {
+            "name": "Mini 2 Yedek Pervane x4",
             "shortName": "Mini 2 Yedek Pervane",
-            "price": { "$numberInt": "599" },
-            "imgPaths": ["/mini2FlyMoreComboKanat.avif"],
-            "stockAmount": { "$numberInt": "20" },
+            "price": { "$numberInt": "399" },
+            "imgPaths": ["/mini-2-combo-battery.webp"],
+            "stockAmount": { "$numberInt": "0" },
             "link": "/urunler/soundwave-mini-2-pervane",
             "category": "Yedek Parçalar"
         }
@@ -36,7 +64,12 @@
             "category": "Dronelar",
             "imgPaths": ["/mini-2-combo-1.webp", "/mini-2-combo-2.webp"],
             "stockAmount": { "$numberInt": "20" },
-            "link": "/urunler/soundwave-mini-2-combo"
+            "link": "/urunler/soundwave-mini-2-combo",
+            "description": [
+                "SoundWave Mini 2 Fly More Combo, her seviyeden drone kullanıcısına hitap eden mükemmel bir seçenek sunuyor. 40 dakikaya kadar uçuş süresi sağlayan iki batarya ile uzun süreli uçuş keyfi yaşayabilirsiniz. Full HD kamera, çekimlerinizde yüksek çözünürlük sağlar ve **Beni Takip Et Modu** ile drone'unuz sizi her zaman takip eder. Bu özellik, hareket halindeyken mükemmel çekimler yapmanızı sağlar. Katlanabilir yapısı, taşıma çantası ile birlikte son derece taşınabilir olup, dış mekan etkinliklerinizde de rahatça kullanabilirsiniz.",
+                "SoundWave Mini 2 Fly More Combo, sadece uçuş süresi ile değil, taşınabilirlik açısından da büyük bir avantaj sunuyor. Taşıma çantası, drone'unuzu güvenle taşımanızı sağlarken, taşıma sırasında oluşabilecek darbelere karşı korur. Ürün, ekstra batarya ve aksesuarlarla birlikte gelir, böylece daha uzun süreli uçuşlar yapabilirsiniz. 3 yıl garanti süresi ve 7/24 teknik destek, kullanıcıların herhangi bir sorunla karşılaştığında hızlıca çözüm bulmalarını sağlar. Ücretsiz kargo ve güvenli ödeme seçenekleriyle de alışverişinizi kolaylaştırır.",
+                "SoundWave Mini 2 Fly More Combo fiyatı vergiler dahil olarak belirlenmiştir. Yüksek kaliteli drone deneyimi arayan kullanıcılar için mükemmel bir tercihtir. Ayrıca, ücretsiz kargo avantajı ile teslimat sürecinde herhangi bir ek ücret ödemeniz gerekmez. 3 yıl garanti, ürünün uzun süre güvenli bir şekilde kullanılmasını sağlar. Şimdi sipariş vererek bu güçlü drone'un sunduğu avantajlardan yararlanabilirsiniz."
+            ]
         },
         {
             "name": "SoundWave Mini 2 Siyah - Drone Full Hd Kamera Beni Takip Et Mod Taşıma Çanta 3 Yıl Garantili",
@@ -45,7 +78,12 @@
             "category": "Dronelar",
             "imgPaths": ["/mini-2-siyah-1.webp", "/mini-2-siyah-2.webp"],
             "stockAmount": { "$numberInt": "20" },
-            "link": "/urunler/soundwave-mini-2-siyah"
+            "link": "/urunler/soundwave-mini-2-siyah",
+            "description": [
+                "SoundWave Mini 2, üstün teknolojisi ve şık tasarımıyla, drone tutkunlarına benzersiz bir uçuş deneyimi sunuyor. Full HD kamerası, her anı yüksek çözünürlükle kaydetmenizi sağlar, böylece manzaraların ve anıların net ve canlı görüntülerini elde edebilirsiniz. Özellikle Beni Takip Et modu, drone'un sizi otomatik olarak takip etmesini sağlayarak, hareket halindeyken bile mükemmel çekimler yapmanızı mümkün kılar. Bu özellik, özellikle açık hava etkinliklerinde veya dinamik ortamlarda çekim yaparken son derece kullanışlıdır. Hem yeni başlayanlar hem de deneyimli drone kullanıcıları için ideal olan SoundWave Mini 2, kolay kullanım arayüzü ve dayanıklı yapısıyla dikkat çeker.",
+                "SoundWave Mini 2, sadece uçuş deneyimiyle değil, aynı zamanda taşınabilirlik açısından da büyük bir avantaj sunuyor. Ürünle birlikte gelen taşıma çantası, dronunuzu güvenle taşımanıza olanak tanır ve taşıma sırasında oluşabilecek darbelere karşı korur. Uzun pil ömrü, kullanıcılara daha fazla uçuş süresi sunar, böylece kesintisiz ve keyifli bir deneyim elde edebilirsiniz. Ayrıca, 3 yıl garanti süresi, ücretsiz kargo ve 7/24 teknik destek gibi avantajlar, SoundWave Mini 2’yi almayı daha cazip kılar. Teknik desteğin her an ulaşılabilir olması, olası sorunlarda hızlı bir çözüm bulmanızı sağlar ve kullanıcı dostu hizmet anlayışıyla her zaman yanınızdadır.",
+                "SoundWave Mini 2 fiyatı vergiler dahil olarak belirlenmiştir. Ücretsiz kargo avantajı ile teslimat sürecinde herhangi bir ek ücret ödemeniz gerekmez. 3 yıl garanti, kullanıcıların ürünü güvenle kullanabilmesini sağlar ve uzun süreli kullanımda herhangi bir arıza durumunda bile koruma sağlar. Yüksek kaliteli bir drone deneyimi yaşamak isteyenler için SoundWave Mini 2 mükemmel bir tercihtir. Hemen sipariş vererek havadan çekim yapmanın keyfini çıkarabilirsiniz."
+            ]
         },
         {
             "name": "SoundWave Mini Drone - Kameralı Taşıma çantalı havadan görüntü aktarabilen katlanabilen drone 3 Yıl garantili",
@@ -54,7 +92,12 @@
             "category": "Dronelar",
             "imgPaths": ["/mini-1.webp", "/mini-2.webp", "/mini-3.webp"],
             "stockAmount": { "$numberInt": "20" },
-            "link": "/urunler/soundwave-mini"
+            "link": "/urunler/soundwave-mini",
+            "description": [
+                "SoundWave Mini Drone, kompakt tasarımı ve yüksek çözünürlüklü kamerasıyla her seviyedeki drone kullanıcısına hitap eder. Katlanabilir yapısı, taşıma çantası ile birlikte kolayca taşınabilir ve güvenli bir şekilde saklanabilir. Havadan görüntü aktarımı özelliği sayesinde, kaydedilen görüntüler anında izlenebilir ve paylaşılabilir. Full HD kamera ile, her açıdan net ve canlı görüntüler elde edebilir, açık hava etkinliklerinde ya da seyahatlerinizde mükemmel anlar yakalayabilirsiniz.",
+                "Bu model, aynı zamanda kullanıcı dostu bir deneyim sunar. Hem yeni başlayanlar hem de deneyimli kullanıcılar için ideal olan SoundWave Mini Drone, kolay kullanım arayüzü ve güçlü donanımıyla dikkat çeker. 3 yıl garanti süresi, ürünün uzun ömürlü ve güvenli bir şekilde kullanılmasını sağlar. Ücretsiz kargo avantajı ile teslimat sürecinde herhangi bir ek ücret ödemeniz gerekmez. Ayrıca, 7/24 teknik destek ile yaşanabilecek herhangi bir sorun karşısında hızlıca çözüm bulabilirsiniz.",
+                "SoundWave Mini Drone fiyatı vergiler dahil olarak belirlenmiştir. Yüksek kaliteli bir drone deneyimi yaşamak isteyenler için mükemmel bir tercihtir. Ürünle birlikte gelen taşıma çantası ve katlanabilir yapısı, pratik kullanım ve taşınabilirlik sağlar. 3 yıl garanti, ücretsiz kargo ve 7/24 teknik destek gibi avantajlar, kullanıcılar için büyük bir güvence sunar. Hemen sipariş vererek bu güçlü drone'un sunduğu avantajlardan faydalanabilirsiniz."
+            ]
         },
         {
             "name": "SoundWave Mini 3 Plus Gps Drone Haritalar Beni Takip Et Mod Taşıma Çanta Oto Eve Dön 1 Batarya Ile 20dk Uçuş",
@@ -68,7 +111,12 @@
                 "/mini-3-4.webp"
             ],
             "stockAmount": { "$numberInt": "20" },
-            "link": "/urunler/soundwave-mini-3-plus"
+            "link": "/urunler/soundwave-mini-3-plus",
+            "description": [
+                "SoundWave Mini 3 Plus, gelişmiş GPS teknolojisi ve harita özelliği ile profesyonel drone deneyimi arayanlar için mükemmel bir tercihtir. Bu drone, 'Beni Takip Et' moduyla hareket halindeyken otomatik olarak kullanıcıyı takip eder, böylece spor aktivitelerinizde veya gezilerinizde yüksek kaliteli çekimler yapabilirsiniz. Oto Eve Dönme özelliği ise, drone'unuzun kaybolmadan ve güvenli bir şekilde başlangıç noktasına geri dönmesini sağlar. 1 batarya ile 20 dakika uçuş süresi, kesintisiz bir deneyim sunar.",
+                "Kompakt yapısı ve taşıma çantası ile SoundWave Mini 3 Plus, taşıması kolay ve kullanımı son derece pratik bir drone'dur. Yüksek çözünürlüklü kamera ile her anı detaylı şekilde kaydedebilir, havadan görüntüleme konusunda profesyonel sonuçlar elde edebilirsiniz. Ayrıca, 3 yıl garanti süresi, ücretsiz kargo ve 7/24 teknik destek gibi avantajlar, kullanıcıların güvenli ve sorunsuz bir deneyim yaşamasını sağlar.",
+                "SoundWave Mini 3 Plus fiyatı vergiler dahil olarak belirlenmiştir. Ücretsiz kargo avantajı ile teslimat sürecinde ek bir ücret ödemeniz gerekmez. 3 yıl garanti, yüksek kaliteli bir drone deneyimi arayanlar için bu modeli ideal kılar. Hemen sipariş vererek profesyonel bir drone deneyimi yaşamaya başlayabilirsiniz."
+            ]
         },
         {
             "name": "SoundWave Mini 2 - Drone Full Hd Kamera Beni Takip Et Mod Taşıma Çanta 3 Yıl Garantili",
@@ -77,7 +125,12 @@
             "stockAmount": { "$numberInt": "20" },
             "category": "Dronelar",
             "shortName": "Mini 2",
-            "link": "/urunler/soundwave-mini-2"
+            "link": "/urunler/soundwave-mini-2",
+            "description": [
+                "SoundWave Mini 2, gelişmiş Full HD kamerası ve kullanıcı dostu tasarımı ile her seviyedeki drone tutkunları için ideal bir modeldir. Beni Takip Et modu sayesinde drone, hareket halindeyken sizi otomatik olarak takip eder ve her açıdan mükemmel çekimler yapmanızı sağlar. Bu özellik, açık hava etkinlikleri, seyahatler ve dinamik çekimler için son derece kullanışlıdır. SoundWave Mini 2, aynı zamanda dayanıklı yapısı ve kompakt boyutları ile taşıması son derece kolaydır.",
+                "Ürünle birlikte gelen taşıma çantası, drone'nuzu güvenle taşımanızı sağlar ve taşırken oluşabilecek darbelere karşı korur. Uzun pil ömrü sayesinde daha fazla uçuş süresi elde edebilirsiniz ve 3 yıl garanti, ürünün uzun süreli kullanımda da güvenli olmasını sağlar. Ayrıca, ücretsiz kargo ve 7/24 teknik destek gibi avantajlar, kullanıcıların her zaman yanlarında olmamıza imkan tanır.",
+                "SoundWave Mini 2 fiyatı vergiler dahil olarak belirlenmiştir. Ücretsiz kargo avantajı ile teslimat sürecinde herhangi bir ek ücret ödemeniz gerekmez. 3 yıl garanti, yüksek kaliteli bir drone deneyimi yaşamak isteyenler için mükemmel bir tercihtir. Hemen sipariş vererek bu pratik ve güçlü drone ile havadan çekim yapmanın keyfini çıkarabilirsiniz."
+            ]
         },
         {
             "name": "SoundWave Mini X Drone - Kameralı Taşıma çantalı havadan görüntü aktarabilen katlanabilen drone 3 Yıl garanti",
@@ -86,7 +139,12 @@
             "category": "Dronelar",
             "imgPaths": ["/mini-x-1.webp", "/mini-x-2.webp"],
             "stockAmount": { "$numberInt": "20" },
-            "link": "/urunler/soundwave-mini-x"
+            "link": "/urunler/soundwave-mini-x",
+            "description": [
+                "SoundWave Mini X Drone, şık tasarımı ve katlanabilir yapısıyla her an yanınızda taşıyabileceğiniz mükemmel bir drone modelidir. Kameralı yapısı sayesinde havadan görüntü aktarımı yapabilir, her açıdan net ve kaliteli çekimler elde edebilirsiniz. Taşıma çantası ile gelen ürün, güvenli bir şekilde taşınabilir ve dış etkenlere karşı korunaklıdır. Katlanabilir özellik, kullanım kolaylığı sunarak ürünü kompakt hale getirir ve pratik bir taşıma sağlar.",
+                "Mini X, yüksek çözünürlüklü kamerası sayesinde videoları ve fotoğrafları canlı ve net bir şekilde çekmenizi sağlar. Bu özellik, özellikle dış mekan etkinliklerinde ve seyahatlerde mükemmel sonuçlar almanıza yardımcı olur. Hem yeni başlayanlar hem de deneyimli kullanıcılar için ideal olan Mini X, kullanıcı dostu kontrol sistemi ve yüksek dayanıklılığı ile öne çıkar.",
+                "SoundWave Mini X fiyatı vergiler dahil olarak belirlenmiştir. Ücretsiz kargo avantajı ile teslimat sırasında ek bir ücret ödemeniz gerekmez. 3 yıl garanti süresi ile kullanıcıların güvenli bir deneyim yaşaması sağlanır. Eğer havadan çekim yapmayı seviyorsanız, SoundWave Mini X Drone mükemmel bir tercihtir. Hemen sipariş vererek keşfe çıkmaya başlayabilirsiniz."
+            ]
         }
     ]
 }

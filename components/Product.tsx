@@ -18,6 +18,7 @@ import { usePathname } from "next/navigation";
 import getSuggestedProducts from "@/utils/getSuggestedProducts";
 import ProductCarousel from "./ProductCarousel";
 import Button from "./Button";
+import updateUser from "@/utils/updateUser";
 
 export default function Product() {
     const products = useContext(ProductsContext);
@@ -73,13 +74,19 @@ export default function Product() {
             return;
         }
 
+        const newBucket = [
+            ...(userContext.user.bucket as Product[]),
+            ...Array.from({ length: amount }, () => product as Product),
+        ];
+
         userContext?.dispatch({
             type: "bucket",
-            payload: [
-                ...(userContext.user.bucket as Product[]),
-                ...Array.from({ length: amount }, () => product as Product),
-            ],
+            payload: newBucket,
         });
+
+        if (userContext?.user) {
+            updateUser({ ...userContext?.user, bucket: newBucket });
+        }
 
         toast.success(
             <p className="lg:text-lg lg:py-2 lg:px-4">
@@ -108,7 +115,7 @@ export default function Product() {
     useEffect(() => {
         if (!initialRender) {
             const timeOutId = setTimeout(() => {
-                userContext?.dispatch({ type: "updateUser", payload: "none" });
+                updateUser(userContext?.user);
             }, 1500);
             return () => clearTimeout(timeOutId);
         }
@@ -179,21 +186,18 @@ export default function Product() {
                                 <p>Güvenli Ödeme İmkanı</p>
                             </div>
                         </div>
-                        {product?.stockAmount === 0 && (
-                            <p className="text-red-500 lg:text-lg xl:text-xl">
-                                (Ürünün stoğu tükenmiş)
-                            </p>
-                        )}
                     </div>
                     <p className="text-2xl lg:text-3xl  text-gray-600 mb-2">
                         Adet
                     </p>
-                    <div className="flex items-center xl:w-64 justify-between mb-4 border">
+                    <div className="flex items-center w-64 xl:w-64 justify-between mb-4 border">
                         <button
                             className="flex items-center justify-center border-r  py-4 px-4"
-                            onClick={() =>
-                                setAmount((prevState) => prevState + 1)
-                            }
+                            onClick={() => {
+                                if (product.stockAmount > 0) {
+                                    setAmount((prevState) => prevState + 1);
+                                }
+                            }}
                         >
                             <FontAwesomeIcon
                                 className="lg:text-lg xl:text-xl"
@@ -217,6 +221,11 @@ export default function Product() {
                             ></FontAwesomeIcon>
                         </button>
                     </div>
+                    {product?.stockAmount === 0 && (
+                        <p className="text-red-500 lg:text-lg xl:text-xl">
+                            (Ürünün stoğu tükenmiş)
+                        </p>
+                    )}
                     <Button
                         onClick={addToBasket}
                         className={`py-3 px-12 ${
@@ -227,6 +236,14 @@ export default function Product() {
                         Sepete Ekle
                     </Button>
                 </div>
+            </div>
+            <div className="flex flex-col gap-6 xl:gap-8 mt-4 items-center max-w-[100%] w-[100%] mx-auto">
+                <h2 className="text-3xl xl:text-4xl text-center text-gray-600">
+                    SoundWave {product.shortName}
+                </h2>
+                {product?.description?.map((desc: string) => (
+                    <p className="text-gray-500 text-xl">{desc}</p>
+                ))}
             </div>
             <div className="flex flex-col items-center gap-4">
                 <p className="text-3xl lg:text-4xl xl:text-5xl text-center mb-12">

@@ -2,9 +2,10 @@
 
 import { type Product } from "@/interfaces/Product";
 import { type User } from "@/interfaces/User";
+import _ from "lodash";
 import { createContext, useReducer } from "react";
 
-type ActionType = keyof User | "setUser" | "logOut" | "updateUser";
+type ActionType = keyof User | "setUser" | "logOut";
 type PayloadType = string | User | Product[];
 
 interface UserContextInterface {
@@ -21,75 +22,35 @@ interface UserContextInterface {
 
 export const UserContext = createContext<UserContextInterface | null>(null);
 
+function userReducer(
+    prevUser: User | null,
+    action: {
+        type: ActionType;
+        payload: PayloadType;
+    }
+) {
+    if (!prevUser) {
+        return action.payload as User;
+    }
+    if (action.type === "logOut") {
+        return null;
+    }
+
+    const newUser = _.cloneDeep(prevUser);
+    if (action.type === "addresses" && typeof action.payload === "string") {
+        newUser.addresses.push(action.payload as string);
+        return newUser;
+    }
+
+    return { ...newUser, [action.type]: action.payload };
+}
+
 export default function UserProvider({
     children,
 }: {
     children: React.ReactNode;
 }) {
     const [user, dispatch] = useReducer(userReducer, null);
-    function userReducer(
-        prevUser: User | null,
-        action: {
-            type: ActionType;
-            payload: PayloadType;
-        }
-    ) {
-        if (!prevUser || action.type === "setUser") {
-            return action.payload as User;
-        }
-        if (action.type === "addresses") {
-            (async function () {
-                try {
-                    await fetch("/api/mongodb", {
-                        method: "POST",
-                        body: JSON.stringify({
-                            ...prevUser,
-                        }),
-                    });
-                } catch (error) {
-                    console.log("Error user is not updated:", error);
-                }
-            });
-
-            return {
-                ...prevUser,
-                [action.type]: [
-                    ...prevUser.addresses,
-                    action.payload as string,
-                ],
-            };
-        }
-        if (action.type === "bucket") {
-            return {
-                ...prevUser,
-                [action.type]: [...(action.payload as Product[])],
-            };
-        }
-
-        if (action.type === "logOut") {
-            return null;
-        }
-
-        if (action.type === "updateUser") {
-            (async function () {
-                try {
-                    await fetch("/api/mongodb", {
-                        method: "POST",
-                        body: JSON.stringify({
-                            ...prevUser,
-                        }),
-                    });
-                } catch (error) {
-                    console.log("Error user is not updated:", error);
-                }
-            });
-
-            return { ...prevUser };
-        }
-
-        return { ...prevUser, [action.type]: action.payload };
-    }
-
     return (
         <UserContext.Provider value={{ user, dispatch }}>
             {children}

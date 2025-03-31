@@ -2,6 +2,7 @@
 
 import { UserContext } from "@/context/UserProvider";
 import { User } from "@/interfaces/User";
+import updateUser from "@/utils/updateUser";
 import axios, { isAxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import { FormEvent, useContext, useState } from "react";
@@ -23,6 +24,19 @@ export default function ProfilePage() {
                 type: "addresses",
                 payload: newAddress,
             });
+        }
+        if (userContext?.user) {
+            updateUser(
+                newAddress
+                    ? {
+                          ...userContext?.user,
+                          addresses: [
+                              ...userContext.user.addresses,
+                              newAddress,
+                          ],
+                      }
+                    : userContext?.user
+            );
         }
         setInitialUserInfo(userContext?.user);
     }

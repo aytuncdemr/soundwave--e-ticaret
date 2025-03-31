@@ -1,3 +1,4 @@
+import AdditionalProdutcs from "@/components/AdditionalProducts";
 import Banner from "@/components/Banner";
 import DroneProducts from "@/components/DroneProducts";
 import ExampleProduct from "@/components/ExampleProduct";
@@ -19,7 +20,7 @@ export default function Home() {
                 <DroneProducts></DroneProducts>
             </section>
             <section className="additional-products-section">
-                {/* <AdditionalProdutcs></AdditionalProdutcs> */}
+                <AdditionalProdutcs></AdditionalProdutcs>
             </section>
         </>
     );

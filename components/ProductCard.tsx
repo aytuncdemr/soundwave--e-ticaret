@@ -8,7 +8,7 @@ export default function ProductCard({ product }: { product: Product }) {
     return (
         <div className="product max-w-[21rem] group hover:text-gray-400 duration-150">
             <Link href={product.link} className="product flex flex-col px-2">
-                <div className="rounded-sm w-full overflow-hidden">
+                <div className="rounded-sm w-full overflow-hidden mb-4">
                     <Image
                         src={product.imgPaths[0]}
                         alt={product.name}

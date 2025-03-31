@@ -4,6 +4,7 @@ import Button from "@/components/Button";
 import { UserContext } from "@/context/UserProvider";
 import { Product } from "@/interfaces/Product";
 import groupBucket from "@/utils/groupBucket";
+import updateUser from "@/utils/updateUser";
 import {
     faMinus,
     faPlus,
@@ -23,12 +24,17 @@ export default function BasketPage() {
         const newBucket = _.cloneDeep(userContext?.user?.bucket);
 
         if (newBucket) {
-            newBucket.push({ ...bucketElem });
+            const newBucketElem = _.cloneDeep(bucketElem);
+
+            newBucket.push(newBucketElem);
 
             userContext?.dispatch({
                 type: "bucket",
                 payload: newBucket,
             });
+            if (userContext?.user) {
+                updateUser({ ...userContext?.user, bucket: newBucket });
+            }
         }
     }
 
@@ -46,13 +52,16 @@ export default function BasketPage() {
                 type: "bucket",
                 payload: newBucket,
             });
+            if (userContext?.user) {
+                updateUser({ ...userContext?.user, bucket: newBucket });
+            }
         }
     }
 
     useEffect(() => {
         if (!initialRender) {
             const timeOutId = setTimeout(() => {
-                userContext?.dispatch({ type: "updateUser", payload: "none" });
+                updateUser(userContext?.user);
             }, 1500);
             return () => clearTimeout(timeOutId);
         }

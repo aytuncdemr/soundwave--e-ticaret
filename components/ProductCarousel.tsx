@@ -26,7 +26,8 @@ export default function ProductCarousel({
         >
             {images.map((imgPath: StaticImageData, index: number) => {
                 return (
-                    <div key={index}>
+                    <div key={index} className="rounded-xl p-4 border
+                    ">
                         <Image
                             className="rounded-sm w-full"
                             src={imgPath}
