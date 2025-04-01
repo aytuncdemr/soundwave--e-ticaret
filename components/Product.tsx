@@ -237,16 +237,20 @@ export default function Product() {
                     </Button>
                 </div>
             </div>
-            <div className="flex flex-col gap-6 xl:gap-8 mt-4 items-center max-w-[100%] w-[100%] mx-auto">
-                <h2 className="text-3xl xl:text-4xl text-center text-gray-600">
-                    SoundWave {product.shortName}
-                </h2>
-                {product?.description?.map((desc: string, index: number) => (
-                    <p key={index} className="text-gray-500 text-xl">
-                        {desc}
-                    </p>
-                ))}
-            </div>
+            {product.category === "Dronelar" && (
+                <div className="flex flex-col gap-6 xl:gap-8 mt-4 items-center max-w-[100%] w-[100%] mx-auto">
+                    <h2 className="text-3xl xl:text-4xl text-center text-gray-600">
+                        SoundWave {product.shortName} Drone
+                    </h2>
+                    {product?.description?.map(
+                        (desc: string, index: number) => (
+                            <p key={index} className="text-gray-500 text-xl">
+                                {desc}
+                            </p>
+                        )
+                    )}
+                </div>
+            )}
             <div className="flex flex-col items-center gap-4">
                 <p className="text-3xl lg:text-4xl xl:text-5xl text-center mb-12">
                     İlginizi çekebilecek <br /> diğer ürünler

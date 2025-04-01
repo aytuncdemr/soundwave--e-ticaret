@@ -1,48 +1,40 @@
 "use client";
 
 import { UserContext } from "@/context/UserProvider";
-import { useRouter, useSearchParams } from "next/navigation";
+import axios, { isAxiosError } from "axios";
+import { useSearchParams } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 
 export default function PaymentPage() {
-	const userContext = useContext(UserContext);
-	const router = useRouter();
-	const total = useSearchParams().get("total");
-	const [error, setError] = useState<string | null>(null);
-	useEffect(() => {
-		if (!userContext?.user || !total) {
-			router.push("/");
-		}
-		(async function () {
-			setError(null);
+    const userContext = useContext(UserContext);
+    const total = useSearchParams().get("total");
+    const [error, setError] = useState<string | null>(null);
+    useEffect(() => {
+        async function getPaytrHTML() {
+            try {
+                setError(null);
+                const { data } = await axios.post("/api/odeme", {
+                    total,
+                    ...userContext?.user,
+                });
+                console.log(data);
+            } catch (error) {
+                if (isAxiosError(error)) {
+                    setError(error.response?.data.message || error.message);
+                } else if (error instanceof Error) {
+                    setError(error.message);
+                } else {
+                    console.log(error);
+                }
+            }
+        }
 
-			try {
-				const response = await fetch("/api/odeme", {
-					method: "POST",
-					body: JSON.stringify({
-						...userContext?.user,
-						total: Number(total),
-					}),
-				});
+        getPaytrHTML();
+    }, []);
 
-				const data = await response.json();
-				console.log(data);
-			} catch (error) {
-				if (error instanceof Error) {
-					setError(error.message);
-				}
-				if (error instanceof String) {
-					setError(error as string);
-				}
-			}
-		})();
-	});
-
-	return (
-		<section className="pay-section">
-			{error && (
-				<p className="text-center text-2xl">{error}</p>
-			)}
-		</section>
-	);
+    return (
+        <section className="pay-section">
+            {error && <p className="text-center text-2xl">{error}</p>}
+        </section>
+    );
 }
