@@ -10,4 +10,5 @@ export interface Product {
     bucketAmount?: number;
     category: string;
     description?: string[];
+    variations?:Product[];
 }

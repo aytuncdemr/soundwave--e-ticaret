@@ -37,6 +37,30 @@ export async function sendPaymentRequest(payment: User & { total: number }) {
         .update(paytr_token)
         .digest("base64");
 
+    console.log({
+        merchant_id,
+        merchant_key,
+        merchant_salt,
+        email,
+        payment_amount,
+        merchant_oid,
+        user_name,
+        user_address,
+        user_phone,
+        merchant_ok_url,
+        merchant_fail_url,
+        user_basket,
+        user_ip,
+        timeout_limit,
+        debug_on,
+        test_mode,
+        lang,
+        no_installment,
+        max_installment,
+        currency,
+        paytr_token: token,
+    });
+
     const { data } = await axios.post(
         "https://www.paytr.com/odeme/api/get-token",
         null,

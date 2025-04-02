@@ -1,14 +1,16 @@
-import { type Metadata } from "next";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import "@fortawesome/fontawesome-svg-core/styles.css";
+
+import { type Metadata } from "next";
 import ProductsProvider from "@/context/ProductsProvider";
 import UserProvider from "@/context/UserProvider";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+
+import WhatsappWidget from "@/components/WhatsappWidget";
 import { ToastContainer } from "react-toastify";
 
+import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
-import WhatsappWidget from "@/components/WhatsappWidget";
 config.autoAddCss = false;
 
 export const metadata: Metadata = {
@@ -28,7 +30,7 @@ export const metadata: Metadata = {
         url: "https://www.soundwavesky.com",
         images: [
             {
-                url: "/banner.jpeg",
+                url: "./banner.jpeg",
                 width: 800,
                 height: 600,
                 alt: "SoundWave Droneları",

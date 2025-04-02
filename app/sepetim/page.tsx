@@ -78,7 +78,7 @@ export default function BasketPage() {
         ) ?? 0;
 
     return (
-        <section className="basket-section max-w-[102rem] min-h-screen flex justify-center  mx-auto px-4 py-12">
+        <section className="basket-section max-w-[102rem] min-h-[90vh] flex justify-center  mx-auto px-4 py-12">
             <div className="basket-container flex flex-col gap-4 ">
                 {!userContext?.user && (
                     <div className="text-center flex flex-col gap-4 py-64">
@@ -191,7 +191,7 @@ export default function BasketPage() {
                                 Toplam Fiyat: {total}
                                 TL (Vergiler Dahil)
                                 <br />
-                                Ücretsiz Kargo
+                                + Ücretsiz Kargo
                             </p>
                             <div className="flex justify-center">
                                 <Button className="max-w-[50%] lg:max-w-[33%] lg:w-[33%] mx-auto ">
