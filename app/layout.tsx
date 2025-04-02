@@ -30,10 +30,10 @@ export const metadata: Metadata = {
         url: "https://www.soundwavesky.com",
         images: [
             {
-                url: "./banner.jpeg",
+                url: "https://www.soundwavesky.com/banner.jpeg",
                 width: 800,
                 height: 600,
-                alt: "SoundWave Droneları",
+                alt: "SoundWave",
             },
         ],
         type: "website",
