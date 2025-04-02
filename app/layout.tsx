@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "SoundWave - Drone Modelleri | Havacılığı Birlikte Yazıyoruz",
         description:
-            "SoundWave ile drone teknolojisindeki en son yenilikleri keşfedin. Hem hobi meraklıları hem de profesyoneller için profesyonel drone modelleri.",
+            "SoundWave ile drone teknolojisindeki en son yenilikleri keşfedin. Hem hobi meraklıları hem de profesyoneller için drone modelleri ve yedek parçalar.",
         url: "https://www.soundwavesky.com",
         images: [
             {
