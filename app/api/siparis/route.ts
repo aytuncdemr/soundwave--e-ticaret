@@ -1,8 +1,8 @@
 export async function POST(request:Request){
 
-    const body = await request.json();
+    const body = await request.text();
 
     console.log("Body:",body);
 
-    return new Response(JSON.stringify({message:"SoundwaveSKY Başarıyla iletinizi almıştır."}),{status:200});
+    return new Response("OK",{status:200});
 }

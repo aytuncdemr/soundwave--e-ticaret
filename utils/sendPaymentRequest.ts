@@ -2,41 +2,41 @@ import { User } from "@/interfaces/User";
 import axios from "axios";
 import crypto from "crypto";
 import QueryString from "qs";
+import { mongodb } from "./mongodb";
+import groupBucket from "./groupBucket";
 
-export async function sendPaymentRequest(payment: User & { total: number }) {
+export async function sendPaymentRequest(
+    payment: User & { total: number },
+    userIp: string
+) {
     const merchant_id = process.env.MERCHANT_ID as string;
     const merchant_key = process.env.MERCHANT_KEY as string;
     const merchant_salt = process.env.MERCHANT_SALT as string;
-    const basket = JSON.stringify([
-        ["Örnek Ürün 1", "18.00", 1],
-        ["Örnek Ürün 2", "33.25", 2],
-        ["Örnek Ürün 3", "45.42", 1],
-    ]);
+    const basket = JSON.stringify(
+        groupBucket(payment.bucket)?.map((product) => [
+            product.name,
+            String(product.price),
+            product.bucketAmount,
+        ])
+    );
     const user_basket = Buffer.from(basket).toString("base64");
-    const merchant_oid = "IN" + Date.now();
+    const merchant_oid = "TR" + Date.now();
     const max_installment = 0;
     const no_installment = 1;
-    const installment_count = 0;
-    const user_ip = "81.214.164.65";
-    const email = "aytunc04@hotmail.com";
-    const payment_amount = 100000;
+    const user_ip = userIp;
+    const email = payment.email;
+    const payment_amount = payment.total;
     const currency = "TL";
     const test_mode = "1";
-    const user_name = "Aytunc Demir";
-    const user_address = "Çarşı Mah Istanbul Maltepe";
-    const user_phone = "05539516861";
-    const merchant_ok_url = "https://www.soundwavesky.com/siparisler"; 
+    const user_name = payment.name;
+    const user_address = payment.addresses[0];
+    const user_phone = payment.phoneNumber;
+    const merchant_ok_url = "https://www.soundwavesky.com/siparislerim";
     const merchant_fail_url = "https://www.soundwavesky.com/siparis-hata";
-    const timeout_limit = 30;
-    const debug_on = "1";
-    const lang = "tr";
-
     const hashSTR = `${merchant_id}${user_ip}${merchant_oid}${email}${payment_amount}${user_basket}${no_installment}${max_installment}${currency}${test_mode}`;
-    const paytr_token = hashSTR + merchant_salt;
-
-    const token = crypto
+    const paytr_token = crypto
         .createHmac("sha256", merchant_key)
-        .update(paytr_token)
+        .update(hashSTR + merchant_salt)
         .digest("base64");
 
     const params = {
@@ -53,15 +53,11 @@ export async function sendPaymentRequest(payment: User & { total: number }) {
         merchant_fail_url,
         user_basket,
         user_ip,
-        timeout_limit,
-        debug_on,
         test_mode,
-        lang,
         no_installment,
         max_installment,
-        installment_count,
         currency,
-        paytr_token: token,
+        paytr_token,
     };
 
     const { data } = await axios.post(
@@ -74,5 +70,18 @@ export async function sendPaymentRequest(payment: User & { total: number }) {
         }
     );
 
+    const { orders } = await mongodb();
+    await orders.insertOne({
+        hashSTR,
+        email,
+        payment_amount,
+        merchant_oid,
+        user_name,
+        user_address,
+        user_phone,
+        user_basket,
+        user_ip,
+        basket:JSON.parse(basket)
+    });
     return data;
 }

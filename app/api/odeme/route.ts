@@ -3,10 +3,20 @@ import { sendPaymentRequest } from "@/utils/sendPaymentRequest";
 import { isAxiosError } from "axios";
 
 export async function POST(request: Request) {
-    const body = (await request.json()) as User & { total: number };
-
     try {
-        const data = await sendPaymentRequest(body);
+        const body = (await request.json()) as User & { total: number };
+        const userIp = request.headers.get("x-forwarded-for")?.split(",")[0];
+
+        if (!userIp) {
+            return new Response(
+                JSON.stringify({ message: "Kullanıcı IP'si belirlenemedi." }),
+                {
+                    status: 404,
+                }
+            );
+        }
+
+        const data = await sendPaymentRequest(body, userIp);
 
         return new Response(JSON.stringify(data.token), {
             status: 200,

@@ -65,3 +65,4 @@ export default function RootLayout({
 
 //TODO: TEST EVERY FUNCTIONALITY IN MOBILE ANd DESKTOP
 //TODO: SIPARISLER - SIPARIS HATA pages add
+//TODO: ACTIVE ADRESS SEPEARATION ADD AND USE IT IN ODEME.ROUTE/sendPaymentReqeuest.ts remove testmode too

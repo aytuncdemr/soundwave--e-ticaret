@@ -62,7 +62,7 @@ export default function PaymentPage() {
                         src={`https://www.paytr.com/odeme/guvenli/${token}`}
                         id="paytriframe"
                         frameBorder={0}
-                        className="w-full min-h-[750px]"
+                        className="w-full !min-h-[900px]"
                     ></iframe>
                 </>
             )}

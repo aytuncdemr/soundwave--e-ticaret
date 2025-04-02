@@ -21,6 +21,7 @@ export async function mongodb() {
 
     const users = cachedDb.collection("users");
     const products = cachedDb.collection("products");
+    const orders = cachedDb.collection("orders");
 
-    return { db: cachedDb, client: cachedClient, users, products };
+    return { db: cachedDb, client: cachedClient, users, products, orders };
 }
