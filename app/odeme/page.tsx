@@ -3,6 +3,7 @@
 import { UserContext } from "@/context/UserProvider";
 import axios, { isAxiosError } from "axios";
 import { useSearchParams } from "next/navigation";
+import Script from "next/script";
 import { useContext, useEffect, useState } from "react";
 
 export default function PaymentPage() {
@@ -43,14 +44,26 @@ export default function PaymentPage() {
             )}
             {token && (
                 <>
-                    <script src="https://www.paytr.com/js/iframeResizer.min.js"></script>
+                    <Script
+                        onLoad={() => {
+                            if (
+                                typeof window !== "undefined" &&
+                                (window as any).iFrameResize
+                            ) {
+                                (window as any).iFrameResize(
+                                    {},
+                                    "#paytriframe"
+                                );
+                            }
+                        }}
+                        src="https://www.paytr.com/js/iframeResizer.min.js"
+                    ></Script>
                     <iframe
                         src={`https://www.paytr.com/odeme/guvenli/${token}`}
                         id="paytriframe"
                         frameBorder={0}
                         className="w-full min-h-[750px]"
                     ></iframe>
-                    <script>iFrameResize({},"#paytriframe");</script>
                 </>
             )}
         </section>
