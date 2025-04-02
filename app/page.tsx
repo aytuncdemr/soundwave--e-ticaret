@@ -16,7 +16,7 @@ export default function Home() {
             <section className="why-section">
                 <Why></Why>
             </section>
-            <section className="products-section bg-black" id="products">
+            <section className="products-section bg-black" id="urunler">
                 <DroneProducts></DroneProducts>
             </section>
             <section className="additional-products-section">

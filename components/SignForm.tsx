@@ -8,12 +8,12 @@ export default function SignForm() {
     const [isLogin, setIsLogin] = useState<boolean>(true);
 
     return (
-        <div className="mb-16 w-[50%] lg:max-w-[25%] lg:w-[25%]">
+        <div className="mb-16 w-[32rem] max-w-[32rem]">
             <div className="flex items-center  gap-4 lg:gap-6 justify-center mb-4 lg:mb-8">
                 <button
                     type="button"
                     onClick={() => setIsLogin(true)}
-                    className={` py-2 px-8 text-lg lg:text-2xl border border-gray-200 rounded-lg hover:bg-black hover:text-white  duration-150 ${
+                    className={` py-2 px-8 text-lg md:text-2xl border border-gray-200 rounded-lg hover:bg-black hover:text-white  duration-150 ${
                         isLogin && "bg-black text-white"
                     }`}
                 >
@@ -22,7 +22,7 @@ export default function SignForm() {
                 <button
                     type="button"
                     onClick={() => setIsLogin(false)}
-                    className={` py-2 px-8 text-lg lg:text-2xl border border-gray-200 rounded-lg hover:bg-black hover:text-white  duration-150 ${
+                    className={` py-2 px-8 text-lg md:text-2xl border border-gray-200 rounded-lg hover:bg-black hover:text-white  duration-150 ${
                         !isLogin && "bg-black  text-white"
                     }`}
                 >

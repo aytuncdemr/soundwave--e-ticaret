@@ -6,15 +6,16 @@ export async function POST(request: Request) {
     const body = (await request.json()) as User & { total: number };
 
     try {
-        const token = await sendPaymentRequest(body);
-        console.log("PayTR token:", token);
+        const data = await sendPaymentRequest(body);
 
-        return new Response(JSON.stringify({ token }), { status: 200 });
+        return new Response(JSON.stringify(data.token), {
+            status: 200,
+        });
     } catch (error) {
         if (isAxiosError(error)) {
             return new Response(
                 JSON.stringify({
-                    message: error.response?.data.message || error.message,
+                    message: error.response?.data || error.message,
                 }),
                 { status: 500 }
             );

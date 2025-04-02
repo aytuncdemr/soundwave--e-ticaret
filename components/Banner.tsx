@@ -2,20 +2,20 @@
 
 export default function Banner() {
     function scrollToProducts() {
-        document.getElementById("products")?.scrollIntoView({
+        document.getElementById("urunler")?.scrollIntoView({
             behavior: "smooth",
         });
     }
 
     return (
-        <div className="bg-banner-gradient bg-cover bg-center bg-no-repeat h-96 w-full min-h-[46rem] py-12 px-2 flex flex-col justify-center md:justify-normal items-center ">
-            <div className="md:mt-auto flex flex-col gap-4">
-                <h2 className="text-white text-4xl md:text-5xl md:mb-4 text-center">
+        <div className="banner-container bg-banner-gradient bg-cover bg-center bg-no-repeat min-h-[46rem] py-12 px-4 flex items-end justify-center ">
+            <div className="mt-auto flex flex-col gap-4 text-white">
+                <h2 className="text-4xl text-center md:text-5xl md:mb-4">
                     Her Uçuş Yeni <br /> Bir Macera
                 </h2>
                 <button
                     onClick={scrollToProducts}
-                    className="text-white py-2 px-4 hover:bg-white md:text-xl hover:text-black duration-150 border-gray-100 border hover:border-transparent"
+                    className=" px-4 py-2 border-gray-100 duration-150 border  md:text-xl hover:bg-white hover:text-black hover:border-transparent"
                 >
                     Ürünlere Gözat
                 </button>

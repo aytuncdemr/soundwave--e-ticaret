@@ -70,12 +70,11 @@ export default function BasketPage() {
     }, [userContext?.user?.bucket]);
 
     const renderBucketList = groupBucket(userContext?.user?.bucket);
-    const total =
-        renderBucketList?.reduce(
-            (accumulator, next) =>
-                accumulator + (next?.bucketAmount || 0) * next.price,
-            0
-        ) ?? 0;
+    const total = renderBucketList?.reduce(
+        (accumulator, next) =>
+            accumulator + (next?.bucketAmount || 0) * next.price,
+        0
+    );
 
     return (
         <section className="basket-section max-w-[102rem] min-h-[90vh] flex justify-center  mx-auto px-4 py-12">
@@ -190,18 +189,16 @@ export default function BasketPage() {
                             <p className="text-gray-600 text-xl font-bold mt-8 text-center">
                                 Toplam Fiyat: {total}
                                 TL (Vergiler Dahil)
-                                <br />
-                                + Ücretsiz Kargo
+                                <br />+ Ücretsiz Kargo
                             </p>
                             <div className="flex justify-center">
-                                <Button className="max-w-[50%] lg:max-w-[33%] lg:w-[33%] mx-auto ">
-                                    <Link
-                                        className="px-8 py-2 inline-block"
-                                        href={`/odeme?total=${total}`}
-                                    >
-                                        Ödemeye Geç
-                                    </Link>
-                                </Button>
+                                <Link
+                                    className="text-white mt-4 hover:bg-white
+                                     border-black bg-black text-xl hover:text-black duration-150 p-2 rounded-md border text-center max-w-[26rem] w-full"
+                                    href={`/odeme?total=${total}`}
+                                >
+                                    Ödemeye Geç
+                                </Link>
                             </div>
                         </div>
                     </>

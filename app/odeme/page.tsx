@@ -9,6 +9,8 @@ export default function PaymentPage() {
     const userContext = useContext(UserContext);
     const total = useSearchParams().get("total");
     const [error, setError] = useState<string | null>(null);
+    const [token, setToken] = useState<string | null>(null);
+
     useEffect(() => {
         async function getPaytrHTML() {
             try {
@@ -17,10 +19,10 @@ export default function PaymentPage() {
                     total,
                     ...userContext?.user,
                 });
-                console.log(data);
+                setToken(data);
             } catch (error) {
                 if (isAxiosError(error)) {
-                    setError(error.response?.data.message || error.message);
+                    setError(error?.response?.data.message);
                 } else if (error instanceof Error) {
                     setError(error.message);
                 } else {
@@ -33,8 +35,25 @@ export default function PaymentPage() {
     }, []);
 
     return (
-        <section className="pay-section">
-            {error && <p className="text-center text-2xl">{error}</p>}
+        <section className="pay-section min-h-screen py-32">
+            {error && (
+                <p className="text-center text-2xl py-12 text-red-500">
+                    {error}
+                </p>
+            )}
+            {token && (
+                <>
+                    <script src="https://www.paytr.com/js/iframeResizer.min.js"></script>
+                    <iframe
+                        src={`https://www.paytr.com/odeme/guvenli/${token}`}
+                        id="paytriframe"
+                        
+                        frameBorder={0}
+                        className="w-full min-h-[750px]"
+                    ></iframe>
+                    <script>iFrameResize({},'#paytriframe');</script>
+                </>
+            )}
         </section>
     );
 }

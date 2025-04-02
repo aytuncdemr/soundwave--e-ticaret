@@ -1,6 +1,7 @@
 import { User } from "@/interfaces/User";
 import axios from "axios";
 import crypto from "crypto";
+import QueryString from "qs";
 
 export async function sendPaymentRequest(payment: User & { total: number }) {
     const merchant_id = process.env.MERCHANT_ID as string;
@@ -15,6 +16,7 @@ export async function sendPaymentRequest(payment: User & { total: number }) {
     const merchant_oid = "IN" + Date.now();
     const max_installment = 0;
     const no_installment = 1;
+    const installment_count = 0;
     const user_ip = "81.214.164.65";
     const email = "aytunc04@hotmail.com";
     const payment_amount = 100000;
@@ -23,8 +25,8 @@ export async function sendPaymentRequest(payment: User & { total: number }) {
     const user_name = "Aytunc Demir";
     const user_address = "Çarşı Mah Istanbul Maltepe";
     const user_phone = "05539516861";
-    const merchant_ok_url = "https://www.soundwavesky.com/odeme";
-    const merchant_fail_url = "https://www.soundwavesky.com/odeme";
+    const merchant_ok_url = "https://www.soundwavesky.com/siparisler"; 
+    const merchant_fail_url = "https://www.soundwavesky.com/siparis-hata";
     const timeout_limit = 30;
     const debug_on = "1";
     const lang = "tr";
@@ -37,7 +39,7 @@ export async function sendPaymentRequest(payment: User & { total: number }) {
         .update(paytr_token)
         .digest("base64");
 
-    console.log({
+    const params = {
         merchant_id,
         merchant_key,
         merchant_salt,
@@ -57,39 +59,17 @@ export async function sendPaymentRequest(payment: User & { total: number }) {
         lang,
         no_installment,
         max_installment,
+        installment_count,
         currency,
         paytr_token: token,
-    });
+    };
 
     const { data } = await axios.post(
         "https://www.paytr.com/odeme/api/get-token",
-        null,
+        QueryString.stringify(params),
         {
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
-            },
-            params: {
-                merchant_id,
-                merchant_key,
-                merchant_salt,
-                email,
-                payment_amount,
-                merchant_oid,
-                user_name,
-                user_address,
-                user_phone,
-                merchant_ok_url,
-                merchant_fail_url,
-                user_basket,
-                user_ip,
-                timeout_limit,
-                debug_on,
-                test_mode,
-                lang,
-                no_installment,
-                max_installment,
-                currency,
-                paytr_token: token,
             },
         }
     );

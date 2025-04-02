@@ -7,8 +7,6 @@ export interface Product {
     imgPaths: StaticImageData[];
     stockAmount: number;
     link: string;
-    bucketAmount?: number;
     category: string;
     description?: string[];
-    variations?:Product[];
 }

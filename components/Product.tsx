@@ -255,7 +255,7 @@ export default function Product() {
                 <p className="text-3xl lg:text-4xl xl:text-5xl text-center mb-12">
                     İlginizi çekebilecek <br /> diğer ürünler
                 </p>
-                <div className="flex flex-col items-center md:flex-row gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 items-center md:flex-row gap-4">
                     {suggestedProducts &&
                         suggestedProducts.map((suggestedProduct) => {
                             if (!suggestedProduct) {

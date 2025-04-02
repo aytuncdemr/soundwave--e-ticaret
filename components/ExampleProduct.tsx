@@ -4,51 +4,50 @@ import Image from "next/image";
 import Link from "next/link";
 import { useContext } from "react";
 import { ProductsContext } from "@/context/ProductsProvider";
-import { Product } from "@/interfaces/Product";
 import Button from "./Button";
 
 export default function ExampleProduct() {
-
     const products = useContext(ProductsContext);
     const product = products?.droneProducts?.find(
         (product) => product.link === "/urunler/soundwave-mini-3-plus"
-    ) as Product;
+    );
+
+    if (!product) {
+        return null;
+    }
 
     return (
-        <div className="example-product-container flex flex-col lg:flex-row lg:gap-8 lg:max-w-[84rem] max-w-[27rem] mx-auto  items-center gap-4 py-12 px-8">
+        <div className="example-product-container px-8 py-24 flex flex-col mx-auto lg:flex-row gap-4 lg:gap-8 max-w-[42rem] lg:max-w-[84rem] lg:items-center">
             <div className="flex flex-col gap-6">
-                <h2 className="text-3xl lg:text-4xl text-center lg:hidden">
-                    Yeni {product?.shortName}
+                <h2 className="text-4xl text-center lg:hidden">
+                    Yeni {product.shortName}
                 </h2>
 
-                <Link href={product?.link}>
+                <Link href={product.link}>
                     <Image
-                        src={product?.imgPaths[0]}
+                        src={product.imgPaths[0]}
                         width={1920}
                         height={1080}
                         alt={product?.shortName}
-                        className="border border-gray-200 rounded-lg lg:max-w-[42rem]"
+                        className="p-4 border border-gray-200 max-h-[820px] rounded-lg lg:max-w-[42rem]"
                     ></Image>
                 </Link>
             </div>
 
-            <div className="flex flex-col gap-2 items-start lg:max-w-[28rem]">
-                <h2 className="text-3xl lg:text-5xl hidden lg:block">
-                    Yeni {product?.shortName}
+            <div className="flex flex-col gap-4 items-start lg:max-w-[28rem]">
+                <h2 className="hidden lg:block text-5xl">
+                    Yeni {product.shortName}
                 </h2>
-                <p className="text-lg  lg:text-2xl font-thin lg:mt-4 text-gray-500 px-2">
-                    Hafif, taşınabilir ve kullanıcı dostu bir drone paketidir.
-                    Full HD video çekimi, 4 km&apos;ye kadar iletim mesafesi ve
-                    26 dakikalık uçuş süresi gibi özelliklerle, hem hobi amaçlı
-                    hem de profesyonel kullanıcılara hitap eder. Fly More Combo
-                    seti, ek bataryalar, pervaneler ve taşıma çantası gibi
-                    aksesuarlarla gelir, böylece uçuş deneyiminizi daha uzun
-                    süre keyifle sürdürebilirsiniz. Kolay kullanım ve güçlü
-                    performansıyla hem yeni başlayanlar hem de deneyimli drone
-                    kullanıcıları için idealdir.
-                </p>
+                {product.description?.slice(0, 2).map((desc, index) => (
+                    <p key={index} className="text-gray-400 p-2 text-lg">
+                        {desc}
+                    </p>
+                ))}
                 <Button>
-                    <Link className="px-16 py-3 inline-block" href={product?.link}>
+                    <Link
+                        className="px-16 py-3 inline-block "
+                        href={product?.link}
+                    >
                         Ürüne git
                     </Link>
                 </Button>

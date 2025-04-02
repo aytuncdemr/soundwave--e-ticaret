@@ -47,14 +47,14 @@ export default function Footer() {
 
     return (
         <footer className="bg-black py-8 px-4">
-            <div className="footer-container text-white flex flex-col gap-6 max-w-[25rem] mx-auto justify-center">
+            <div className="footer-container text-white flex flex-col gap-6 max-w-[400px] mx-auto">
                 <h2 className="text-center text-xl md:text-2xl">
-                    Kampanyalarımızdan <br /> Haberdar Olun!
+                    Kampanyalarımızdan İlk Siz <br /> Haberdar Olun!
                 </h2>
 
                 <form
                     onSubmit={allowNotificationsHandler}
-                    className="flex items-center p-3 rounded-sm  border border-gray-700 mb-6"
+                    className="flex items-center p-3 rounded-sm border  border-gray-700"
                 >
                     <input
                         onChange={(e) => setEmail(e.target.value)}
@@ -62,7 +62,7 @@ export default function Footer() {
                         type="email"
                         placeholder="E-posta"
                         required
-                        className="flex-1 lg:text-xl border-none bg-black outline-none"
+                        className="flex-1 lg:text-xl border-none outline-none bg-black "
                         ref={inputRef}
                     />
                     <button className="hover:cursor-pointer hover:text-gray-500 duration-150 text-xl">
@@ -72,16 +72,13 @@ export default function Footer() {
                     </button>
                 </form>
                 {isSending && (
-                    <div className="flex justify-center mb-6">
+                    <div className="flex justify-center">
                         <ThreeDot color="#fff" size="medium" />,
                     </div>
                 )}
                 {response && (
-                    <p className="text-lg text-center lg:text-xl mb-6">
-                        {response}
-                    </p>
+                    <p className="text-center text-lg lg:text-xl">{response}</p>
                 )}
-
                 <p id="kampanyalar" className="text-sm text-center">
                     @2025 Soundwave -{" "}
                     <Link

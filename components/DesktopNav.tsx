@@ -1,3 +1,5 @@
+"use client";
+
 import { UserContext } from "@/context/UserProvider";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -25,7 +27,8 @@ export default function DesktopNav() {
                     <li>
                         <Link
                             className={`${
-                                pathName === "/urunler/dronelar" && "text-gray-500"
+                                pathName === "/urunler/dronelar" &&
+                                "text-gray-500"
                             } hover:text-gray-500 duration-150`}
                             href={"/urunler/dronelar"}
                         >
@@ -35,15 +38,14 @@ export default function DesktopNav() {
                     <li>
                         <Link
                             className={`${
-                                pathName === "/urunler/yedek-parcalar" && "text-gray-500"
+                                pathName === "/urunler/yedek-parcalar" &&
+                                "text-gray-500"
                             } hover:text-gray-500 duration-150`}
                             href={"/urunler/yedek-parcalar"}
                         >
                             Yedek Parçalar
                         </Link>
                     </li>
-
-                  
                 </ul>
             </nav>
             <Link className="text-2xl lg:text-3xl" href={"/"}>
@@ -74,9 +76,7 @@ export default function DesktopNav() {
                             } hover:text-gray-500 duration-150`}
                             href={"/sepetim"}
                         >
-                            Sepetim{" "}
-                            {(userContext?.user?.bucket?.length || 0) > 0 &&
-                                `(${userContext?.user?.bucket.length})`}
+                            Sepetim
                         </Link>
                     </li>
                     <li>

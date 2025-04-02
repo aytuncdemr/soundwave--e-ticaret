@@ -29,7 +29,7 @@ function userReducer(
         payload: PayloadType;
     }
 ) {
-    if (!prevUser) {
+    if (!prevUser || action.type === "setUser") {
         return action.payload as User;
     }
     if (action.type === "logOut") {
@@ -37,6 +37,7 @@ function userReducer(
     }
 
     const newUser = _.cloneDeep(prevUser);
+    
     if (action.type === "addresses" && typeof action.payload === "string") {
         newUser.addresses.push(action.payload as string);
         return newUser;

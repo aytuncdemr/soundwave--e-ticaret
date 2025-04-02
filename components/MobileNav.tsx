@@ -1,3 +1,5 @@
+"use client";
+
 import {
     faArrowRightToBracket,
     faBars,
@@ -8,7 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { createPortal } from "react-dom";
 import MobileSideBar from "./MobileSideBar";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { UserContext } from "@/context/UserProvider";
 
@@ -17,7 +19,7 @@ export default function MobileNav() {
     const pathName = usePathname();
     const router = useRouter();
     const userContext = useContext(UserContext);
-
+    const [isInitialRender, setIsInitialRender] = useState(true);
     function logOutHandler() {
         closeMobileSideBar();
         userContext?.dispatch({ type: "logOut", payload: "none" });
@@ -35,9 +37,17 @@ export default function MobileNav() {
         document.body.style.overflow = "hidden";
     }
 
+    useEffect(() => {
+        if (isInitialRender) {
+            setIsInitialRender(false);
+        } else {
+            closeMobileSideBar();
+        }
+    }, [pathName]);
+
     return (
         <nav className="mobile-nav md:hidden">
-            <ul className="flex items-center justify-between ">
+            <ul className="flex items-center justify-between">
                 <li>
                     <FontAwesomeIcon
                         icon={faBars}
@@ -86,8 +96,8 @@ export default function MobileNav() {
             {mobileSideBarOpen &&
                 createPortal(
                     <MobileSideBar
+                    closeMobileSideBar={closeMobileSideBar}
                         logOutHandler={logOutHandler}
-                        closeMobileNav={closeMobileSideBar}
                     ></MobileSideBar>,
                     document.querySelector("body") as HTMLBodyElement
                 )}
