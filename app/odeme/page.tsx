@@ -41,6 +41,9 @@ export default function PaymentPage() {
         getPaytrHTML();
     }, [total,userContext?.user]);
 
+    
+    return null;
+
     return (
         <section className="pay-section min-h-screen py-32">
             {error && (

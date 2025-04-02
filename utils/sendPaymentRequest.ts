@@ -25,7 +25,7 @@ export async function sendPaymentRequest(
     const no_installment = 1;
     const user_ip = userIp;
     const email = payment.email;
-    const payment_amount = payment.total;
+    const payment_amount = payment.total * 100;
     const currency = "TL";
     const test_mode = "1";
     const user_name = payment.name;
@@ -81,7 +81,7 @@ export async function sendPaymentRequest(
         user_phone,
         user_basket,
         user_ip,
-        basket:JSON.parse(basket)
+        basket: JSON.parse(basket),
     });
     return data;
 }
