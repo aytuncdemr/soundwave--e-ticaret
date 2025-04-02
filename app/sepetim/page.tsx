@@ -1,6 +1,5 @@
 "use client";
 
-import Button from "@/components/Button";
 import { UserContext } from "@/context/UserProvider";
 import { Product } from "@/interfaces/Product";
 import groupBucket from "@/utils/groupBucket";

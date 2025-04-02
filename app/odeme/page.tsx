@@ -47,11 +47,10 @@ export default function PaymentPage() {
                     <iframe
                         src={`https://www.paytr.com/odeme/guvenli/${token}`}
                         id="paytriframe"
-                        
                         frameBorder={0}
                         className="w-full min-h-[750px]"
                     ></iframe>
-                    <script>iFrameResize({},'#paytriframe');</script>
+                    <script>iFrameResize({},"#paytriframe");</script>
                 </>
             )}
         </section>
