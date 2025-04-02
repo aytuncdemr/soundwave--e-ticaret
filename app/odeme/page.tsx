@@ -6,6 +6,12 @@ import { useSearchParams } from "next/navigation";
 import Script from "next/script";
 import { useContext, useEffect, useState } from "react";
 
+declare global {
+    interface Window {
+        iFrameResize?: (options: object, selector: string) => void;
+    }
+}
+
 export default function PaymentPage() {
     const userContext = useContext(UserContext);
     const total = useSearchParams().get("total");
@@ -45,19 +51,13 @@ export default function PaymentPage() {
             {token && (
                 <>
                     <Script
+                        src="https://www.paytr.com/js/iframeResizer.min.js"
                         onLoad={() => {
-                            if (
-                                typeof window !== "undefined" &&
-                                (window as any).iFrameResize
-                            ) {
-                                (window as any).iFrameResize(
-                                    {},
-                                    "#paytriframe"
-                                );
+                            if (window.iFrameResize) {
+                                window.iFrameResize({}, "#paytriframe");
                             }
                         }}
-                        src="https://www.paytr.com/js/iframeResizer.min.js"
-                    ></Script>
+                    />
                     <iframe
                         src={`https://www.paytr.com/odeme/guvenli/${token}`}
                         id="paytriframe"
