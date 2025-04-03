@@ -82,6 +82,7 @@ export async function sendPaymentRequest(
         user_basket,
         user_ip,
         basket: JSON.parse(basket),
+        paid: false,
     });
     return data;
 }
