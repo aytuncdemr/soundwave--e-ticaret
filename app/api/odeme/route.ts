@@ -2,6 +2,7 @@ import { User } from "@/interfaces/User";
 import { sendPaymentRequest } from "@/utils/sendPaymentRequest";
 import { isAxiosError } from "axios";
 
+
 export async function POST(request: Request) {
     try {
         const body = (await request.json()) as User & { total: number };

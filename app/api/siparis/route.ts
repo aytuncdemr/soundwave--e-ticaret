@@ -1,21 +1,42 @@
 import { mongodb } from "@/utils/mongodb";
+import crypto from "crypto";
 
 export async function POST(request: Request) {
     try {
         const body = await request.text();
         const params = new URLSearchParams(body);
-        const hash = params.get("hash");
+
         const merchant_oid = params.get("merchant_oid");
+        const hash = params.get("hash");
+
         const status = params.get("status");
         const payment_type = params.get("payment_type");
+        const total_amount = params.get("total_amount");
         const failed_reason_msg = params.get("failed_reason_msg");
         const failed_reason_code = params.get("failed_reason_code	");
 
         const { orders } = await mongodb();
 
-        console.log("PARAMS:", params);
+        const hashStr =
+            (merchant_oid as string) +
+            (process.env.MERCHANT_SALT as string) +
+            (status as string) +
+            (total_amount as string);
+        const hashSoundwave = crypto
+            .createHmac("sha256", process.env.MERCHANT_KEY as string)
+            .update(hashStr)
+            .digest("base64");
+
+        console.log(params);
+        console.log("hash:", hash);
+        console.log("hashSoundwave:", hashSoundwave);
+
+        if (hash !== hashSoundwave) {
+            return new Response("Hash değerleri aynı değil.", { status: 400 });
+        }
+
         await orders.findOneAndUpdate(
-            { hash, merchant_oid },
+            { merchant_oid },
             {
                 $set:
                     status === "success"
@@ -29,7 +50,7 @@ export async function POST(request: Request) {
         );
         return new Response("OK", { status: 200 });
     } catch (error) {
-        console.log("Error code executing");
+        console.log("error:", error);
         if (error instanceof Error) {
             return new Response(
                 "Bir şeyler ters gitti <SoundwaveSKY>: " + error.message,
