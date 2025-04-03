@@ -1,7 +1,6 @@
 import { mongodb } from "@/utils/mongodb";
 
 export async function POST(request: Request) {
-    console.log("POST");
     try {
         const body = await request.text();
         const params = new URLSearchParams(body);
@@ -14,6 +13,7 @@ export async function POST(request: Request) {
 
         const { orders } = await mongodb();
 
+        console.log("PARAMS:", params);
         await orders.findOneAndUpdate(
             { hash, merchant_oid },
             {
@@ -27,7 +27,6 @@ export async function POST(request: Request) {
                           },
             }
         );
-        console.log("Returning OK");
         return new Response("OK", { status: 200 });
     } catch (error) {
         console.log("Error code executing");

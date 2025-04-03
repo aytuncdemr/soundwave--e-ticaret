@@ -4,6 +4,7 @@ import crypto from "crypto";
 import QueryString from "qs";
 import { mongodb } from "./mongodb";
 import groupBucket from "./groupBucket";
+import getDate from "./getDate";
 
 export async function sendPaymentRequest(
     payment: User & { total: number },
@@ -83,6 +84,7 @@ export async function sendPaymentRequest(
         user_ip,
         basket: JSON.parse(basket),
         paid: false,
+        date: getDate(),
     });
     return data;
 }

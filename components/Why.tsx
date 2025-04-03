@@ -2,7 +2,7 @@ export default function Why() {
     return (
         <div className="why-container py-24 px-4 lg:py-32 max-w-[112rem] mx-auto ">
             <header className="mb-8">
-                <h2 className="text-center text-3xl lg:text-5xl">
+                <h2 className="text-center text-3xl md:text-5xl">
                     Neden SoundWave ?{" "}
                 </h2>
             </header>
