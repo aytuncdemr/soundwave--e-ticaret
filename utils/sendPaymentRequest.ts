@@ -33,10 +33,10 @@ export async function sendPaymentRequest(
     const user_phone = payment.phoneNumber;
     const merchant_ok_url = "https://www.soundwavesky.com/siparislerim";
     const merchant_fail_url = "https://www.soundwavesky.com/siparis-hata";
-    const hashSTR = `${merchant_id}${user_ip}${merchant_oid}${email}${payment_amount}${user_basket}${no_installment}${max_installment}${currency}${test_mode}`;
+    const hash = `${merchant_id}${user_ip}${merchant_oid}${email}${payment_amount}${user_basket}${no_installment}${max_installment}${currency}${test_mode}`;
     const paytr_token = crypto
         .createHmac("sha256", merchant_key)
-        .update(hashSTR + merchant_salt)
+        .update(hash + merchant_salt)
         .digest("base64");
 
     const params = {
@@ -72,7 +72,7 @@ export async function sendPaymentRequest(
 
     const { orders } = await mongodb();
     await orders.insertOne({
-        hashSTR,
+        hash,
         email,
         payment_amount,
         merchant_oid,
