@@ -1,6 +1,7 @@
 import { mongodb } from "@/utils/mongodb";
 
 export async function POST(request: Request) {
+    console.log("POST");
     try {
         const body = await request.text();
         const params = new URLSearchParams(body);
