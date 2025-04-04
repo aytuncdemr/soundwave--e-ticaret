@@ -66,7 +66,7 @@ export default function DesktopNav() {
                             } hover:text-gray-500 duration-150`}
                             href={userContext?.user ? "/hesabim" : "/giris-yap"}
                         >
-                            {userContext?.user ? "Hesabım" : "Giriş Yap"}
+                            {userContext?.user ? "Hesabım" : "Giriş Yap / Kayıt Ol"}
                         </Link>
                     </li>
                     <li>
@@ -79,27 +79,7 @@ export default function DesktopNav() {
                             Sepetim
                         </Link>
                     </li>
-                    <li>
-                        <Link
-                            className={`${
-                                pathName === "/iletisim" && "text-gray-500"
-                            } hover:text-gray-500 duration-150`}
-                            href={"/iletisim"}
-                        >
-                            İletişim
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            className={`${
-                                pathName === "/sikca-sorulan-sorular" &&
-                                "text-gray-500"
-                            } hover:text-gray-500 duration-150`}
-                            href={"/sikca-sorulan-sorular"}
-                        >
-                            S.S.S
-                        </Link>
-                    </li>
+                   
                 </ul>
             </nav>
         </div>

@@ -5,7 +5,7 @@ import { type User } from "@/interfaces/User";
 import _ from "lodash";
 import { createContext, useReducer } from "react";
 
-type ActionType = keyof User | "setUser" | "logOut";
+type ActionType = keyof User | "setUser" | "logOut" | "payment-okay";
 type PayloadType = string | User | Product[];
 
 interface UserContextInterface {
@@ -37,9 +37,13 @@ function userReducer(
     }
 
     const newUser = _.cloneDeep(prevUser);
-    
+
     if (action.type === "addresses" && typeof action.payload === "string") {
         newUser.addresses.push(action.payload as string);
+        return newUser;
+    }
+    if (action.type === "payment-okay") {
+        newUser.bucket = [];
         return newUser;
     }
 

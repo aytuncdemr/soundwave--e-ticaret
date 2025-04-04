@@ -23,7 +23,7 @@ import updateUser from "@/utils/updateUser";
 export default function Product() {
     const products = useContext(ProductsContext);
     const userContext = useContext(UserContext);
-    const [amount, setAmount] = useState(0);
+    const [amount, setAmount] = useState(1);
     const [product, setProduct] = useState<Product | null>(null);
     const [initialRender, setInitialRender] = useState(true);
     const pathName = usePathname();
@@ -187,10 +187,11 @@ export default function Product() {
                             </div>
                         </div>
                     </div>
+                    <div className="flex flex-col gap-4 items-center xl:items-start">
                     <p className="text-2xl lg:text-3xl  text-gray-600 mb-2">
                         Adet
                     </p>
-                    <div className="flex items-center w-64 xl:w-64 justify-between mb-4 border">
+                    <div className="flex items-center w-48  justify-between  border">
                         <button
                             className="flex items-center justify-center border-r  py-4 px-4"
                             onClick={() => {
@@ -200,11 +201,11 @@ export default function Product() {
                             }}
                         >
                             <FontAwesomeIcon
-                                className="lg:text-lg xl:text-xl"
+                                className="lg:text-lg "
                                 icon={faPlus}
                             ></FontAwesomeIcon>
                         </button>
-                        <p className="text-xl lg:text-2xl xl:text-3xl">
+                        <p className="text-xl lg:text-2xl ">
                             {amount}
                         </p>
                         <button
@@ -235,6 +236,8 @@ export default function Product() {
                     >
                         Sepete Ekle
                     </Button>
+                    </div>
+                    
                 </div>
             </div>
             {product.category === "Dronelar" && (

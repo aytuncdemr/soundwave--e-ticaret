@@ -2,7 +2,7 @@
 
 import { UserContext } from "@/context/UserProvider";
 import axios, { isAxiosError } from "axios";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Script from "next/script";
 import { useContext, useEffect, useState } from "react";
 
@@ -39,9 +39,8 @@ export default function PaymentPage() {
         }
 
         getPaytrHTML();
-    }, [total,userContext?.user]);
+    }, [total, userContext?.user]);
 
-    
     return (
         <section className="pay-section min-h-screen py-32">
             {error && (

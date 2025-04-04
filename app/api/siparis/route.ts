@@ -13,7 +13,7 @@ export async function POST(request: Request) {
         const payment_type = params.get("payment_type");
         const total_amount = params.get("total_amount");
         const failed_reason_msg = params.get("failed_reason_msg");
-        const failed_reason_code = params.get("failed_reason_code	");
+        const failed_reason_code = params.get("failed_reason_code");
 
         const { orders } = await mongodb();
 

@@ -32,7 +32,7 @@ export async function sendPaymentRequest(
     const user_name = payment.name;
     const user_address = payment.addresses[0];
     const user_phone = payment.phoneNumber;
-    const merchant_ok_url = "https://www.soundwavesky.com/siparislerim";
+    const merchant_ok_url = "https://www.soundwavesky.com/siparis-onay";
     const merchant_fail_url = "https://www.soundwavesky.com/siparis-hata";
     const hash = `${merchant_id}${user_ip}${merchant_oid}${email}${payment_amount}${user_basket}${no_installment}${max_installment}${currency}${test_mode}`;
     const paytr_token = crypto
@@ -75,7 +75,7 @@ export async function sendPaymentRequest(
     await orders.insertOne({
         hash,
         email,
-        payment_amount,
+        payment_amount: payment_amount,
         merchant_oid,
         user_name,
         user_address,
