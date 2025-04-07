@@ -2,7 +2,7 @@
 
 import { UserContext } from "@/context/UserProvider";
 import { Order } from "@/interfaces/Order";
-import { faShoppingBag, faTruckFast } from "@fortawesome/free-solid-svg-icons";
+import { faTruckFast } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios, { isAxiosError } from "axios";
 import Link from "next/link";
@@ -35,7 +35,7 @@ export default function OrdersPage() {
         }
     }, []);
 
-    if (!orders || !(orders.length > 0)) {
+    if (!orders || !(orders.length > 0) || error) {
         return (
             <>
                 <div className="text-center flex flex-col gap-4 py-64">
@@ -53,6 +53,7 @@ export default function OrdersPage() {
                     >
                         Alışverişe başlamak <br /> için tıklayın.
                     </Link>
+                    {error && <p className="text-lg xl:text-xl">{error}</p>}
                 </div>
             </>
         );
@@ -73,9 +74,17 @@ export default function OrdersPage() {
                                 className="border border-gray-300 p-6 text-lg rounded-lg"
                                 key={order.merchant_oid}
                             >
-                                <p>{order.bucket.map((bucketElem) =><><p>{bucketElem[0]}</p></>)}</p>
+                                <p>
+                                    {order.bucket.map((bucketElem) => (
+                                        <>
+                                            <p>{bucketElem[0]}</p>
+                                        </>
+                                    ))}
+                                </p>
                                 <p>{order.address}</p>
-                                <p className="text-center">{order.total}.00TL</p>
+                                <p className="text-center">
+                                    {order.total}.00TL
+                                </p>
                             </div>
                         );
                     })}
