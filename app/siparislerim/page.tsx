@@ -1,10 +1,12 @@
 "use client";
 
+import { ProductsContext } from "@/context/ProductsProvider";
 import { UserContext } from "@/context/UserProvider";
 import { Order } from "@/interfaces/Order";
 import { faTruckFast } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios, { isAxiosError } from "axios";
+import Image from "next/image";
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 
@@ -12,6 +14,7 @@ export default function OrdersPage() {
     const [orders, setOrders] = useState<Order[] | null>(null);
     const [error, setError] = useState<string | null>(null);
     const userContext = useContext(UserContext);
+    const productsContext = useContext(ProductsContext);
     useEffect(() => {
         try {
             async function getOrders() {
@@ -67,24 +70,66 @@ export default function OrdersPage() {
                         Siparişlerim
                     </h2>
                 </header>
-                <div className="orders grid grid-cols-1">
+                <div className="orders grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-4 gap-8">
                     {orders.map((order) => {
                         return (
                             <div
-                                className="border border-gray-300 p-6 text-lg rounded-lg"
+                                className="border border-gray-300 p-6 rounded-lg text-lg lg:text-xl flex flex-col gap-6"
                                 key={order.merchant_oid}
                             >
-                                <p>
-                                    {order.bucket.map((bucketElem) => (
-                                        <>
-                                            <p>{bucketElem[0]}</p>
-                                        </>
-                                    ))}
+                                <h2 className="text-center text-2xl mb-4">
+                                    {order.merchant_oid}
+                                </h2>
+                                <p>ALICI: {order.name}</p>
+
+                                <p>E-POSTA: {order.email}</p>
+                                <p>TELEFON: {order.phoneNumber}</p>
+                                <p>SIPARIS TARIHI: {order.date}</p>
+                                <div className="flex flex-col gap-4">
+                                    <p className="text-2xl">Ürünler</p>
+                                    {order.bucket.map((bucketElem, index) => {
+                                        if (
+                                            !productsContext?.additionalProducts ||
+                                            !productsContext.droneProducts
+                                        ) {
+                                            return null;
+                                        }
+
+                                        const imagePath = [
+                                            ...productsContext?.additionalProducts,
+                                            ...productsContext?.droneProducts,
+                                        ].find(
+                                            (product) =>
+                                                product.name === bucketElem[0]
+                                        )?.imgPaths[0];
+
+                                        return (
+                                            <div key={index}>
+                                                <p>{bucketElem[0]}</p>
+                                                {imagePath && (
+                                                    <Image
+                                                        src={imagePath}
+                                                        alt={bucketElem[0]}
+                                                        width={1920}
+                                                        height={1080}
+                                                        className="max-w-[20%]"
+                                                    ></Image>
+                                                )}
+                                                <p>Adet: {bucketElem[2]}</p>
+                                                <p>
+                                                    Fiyat: {bucketElem[1]}.00TL
+                                                </p>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+
+                                <p>ADRES: {order.address}</p>
+
+                                <p className="text-center mt-8">
+                                    TOPLAM FİYAT: {order.total}.00TL
                                 </p>
-                                <p>{order.address}</p>
-                                <p className="text-center">
-                                    {order.total}.00TL
-                                </p>
+                                <p className="text-center">({order.status})</p>
                             </div>
                         );
                     })}
