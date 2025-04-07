@@ -1,3 +1,4 @@
+import getDateWithHour from "@/utils/getDateWithHour";
 import { mongodb } from "@/utils/mongodb";
 import crypto from "crypto";
 
@@ -14,8 +15,6 @@ export async function POST(request: Request) {
         const total_amount = params.get("total_amount");
         const failed_reason_msg = params.get("failed_reason_msg");
         const failed_reason_code = params.get("failed_reason_code");
-
-        const { orders } = await mongodb();
 
         const hashStr =
             (merchant_oid as string) +
@@ -35,16 +34,24 @@ export async function POST(request: Request) {
             return new Response("Hash değerleri aynı değil.", { status: 400 });
         }
 
+        const { orders } = await mongodb();
+
         await orders.findOneAndUpdate(
             { merchant_oid },
             {
                 $set:
                     status === "success"
-                        ? { paid: true, payment_type }
+                        ? {
+                              paid: true,
+                              payment_type,
+                              status: "Ödendi - " + getDateWithHour(),
+                          }
                         : {
                               payment_error: failed_reason_msg,
                               payment_error_code: failed_reason_code,
                               payment_type,
+                              status:
+                                  "Ödeme Hatası Alındı - " + getDateWithHour(),
                           },
             }
         );

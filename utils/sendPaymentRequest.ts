@@ -5,6 +5,7 @@ import QueryString from "qs";
 import { mongodb } from "./mongodb";
 import groupBucket from "./groupBucket";
 import getDate from "./getDate";
+import getDateWithHour from "./getDateWithHour";
 
 export async function sendPaymentRequest(
     payment: User & { total: number },
@@ -28,13 +29,12 @@ export async function sendPaymentRequest(
     const email = payment.email;
     const payment_amount = payment.total * 100;
     const currency = "TL";
-    const test_mode = "1";
     const user_name = payment.name;
     const user_address = payment.addresses[0];
     const user_phone = payment.phoneNumber;
     const merchant_ok_url = "https://www.soundwavesky.com/siparis-onay";
     const merchant_fail_url = "https://www.soundwavesky.com/siparis-hata";
-    const hash = `${merchant_id}${user_ip}${merchant_oid}${email}${payment_amount}${user_basket}${no_installment}${max_installment}${currency}${test_mode}`;
+    const hash = `${merchant_id}${user_ip}${merchant_oid}${email}${payment_amount}${user_basket}${no_installment}${max_installment}${currency}`;
     const paytr_token = crypto
         .createHmac("sha256", merchant_key)
         .update(hash + merchant_salt)
@@ -54,7 +54,6 @@ export async function sendPaymentRequest(
         merchant_fail_url,
         user_basket,
         user_ip,
-        test_mode,
         no_installment,
         max_installment,
         currency,
@@ -73,18 +72,17 @@ export async function sendPaymentRequest(
 
     const { orders } = await mongodb();
     await orders.insertOne({
-        hash,
         email,
-        payment_amount: payment_amount,
+        total: payment_amount / 100,
         merchant_oid,
-        user_name,
-        user_address,
-        user_phone,
-        user_basket,
-        user_ip,
-        basket: JSON.parse(basket),
+        name: user_name,
+        address: user_address,
+        phoneNumber: user_phone,
+        ipAddress: user_ip,
+        bucket: JSON.parse(basket),
         paid: false,
-        date: getDate(),
+        status: "Ödeme Bekleniyor - " + getDateWithHour(),
+        date: getDateWithHour(),
     });
     return data;
 }

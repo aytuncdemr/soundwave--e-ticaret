@@ -79,6 +79,16 @@ export default function DesktopNav() {
                             Sepetim
                         </Link>
                     </li>
+                    <li>
+                        <Link
+                            className={`${
+                                pathName === "/siparislerim" && "text-gray-500"
+                            } hover:text-gray-500 duration-150`}
+                            href={"/siparislerim"}
+                        >
+                            Siparişlerim
+                        </Link>
+                    </li>
                    
                 </ul>
             </nav>

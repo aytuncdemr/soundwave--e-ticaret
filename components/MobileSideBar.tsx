@@ -63,6 +63,16 @@ export default function MobileSideBar({
                             </Link>
                         </li>
                     )}
+                    <li>
+                        <Link
+                            className={`${
+                                pathName === "/siparislerim" && "text-gray-500"
+                            }`}
+                            href={"/siparislerim"}
+                        >
+                            Siparişlerim
+                        </Link>
+                    </li>
 
                     <li>
                         <Link
