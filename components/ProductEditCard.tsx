@@ -21,7 +21,10 @@ export default function ProductEditCard({
     ) {
         setProducts((prevState) => {
             const newState = _.cloneDeep(prevState);
-
+            
+            if(field && value){
+                console.log("1");
+            }
             // let productToUpdate = newState?.find(
             //     (productElement) => productElement._id === product?._id
             // );
