@@ -1,8 +1,11 @@
+"use client";
+
 import { UserContext } from "@/context/UserProvider";
 import { useContext, useState } from "react";
 import Button from "./Button";
 import axios, { isAxiosError } from "axios";
 import { useRouter } from "next/navigation";
+import { ObjectId } from "mongodb";
 
 export default function LoginForm() {
     const [email, setEmail] = useState<string | null>(null);
@@ -19,9 +22,25 @@ export default function LoginForm() {
                 email,
                 password,
             });
-
-            userContext?.dispatch({ type: "setUser", payload: data });
-            router.push("/");
+            if (data.token) {
+                userContext?.dispatch({
+                    type: "setUser",
+                    payload: {
+                        email: "admin@hotmail.com",
+                        bucket: [],
+                        _id: "admin",
+                        addresses: [],
+                        phoneNumber: "05555555555",
+                        name: "Admin",
+                        registeredAt: "01.01.2025",
+                        token: data.token,
+                    },
+                });
+                router.push("/admin");
+            } else {
+                userContext?.dispatch({ type: "setUser", payload: data });
+                router.push("/");
+            }
         } catch (error) {
             if (isAxiosError(error)) {
                 setError(error.response?.data.message || error.message);
@@ -56,11 +75,7 @@ export default function LoginForm() {
                     Giriş Yap
                 </Button>
 
-                {error && (
-                    <p className="text-center font-bold">
-                        {error}
-                    </p>
-                )}
+                {error && <p className="text-center font-bold">{error}</p>}
                 <a href="#kampanyalar" className="text-center underline">
                     Kampanyalardan ve Haberlerden <br /> faydalanmak için
                     tıklayın

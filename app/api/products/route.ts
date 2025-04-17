@@ -4,19 +4,19 @@ export async function GET() {
     try {
         const { products } = await mongodb();
 
-        const productDocument = await products.findOne(
+        const productDocuments = await products.find(
             {},
             { projection: { _id: 0 } }
-        );
+        ).toArray();
 
-        if (!productDocument) {
+        if (!productDocuments) {
             return new Response(
-                JSON.stringify({ message: "Ana product dökümanı bulunamadı" }),
+                JSON.stringify({ message: "Ürünler dökümanı bulunamadı" }),
                 { status: 500 }
             );
         }
 
-        return new Response(JSON.stringify(productDocument), { status: 200 });
+        return new Response(JSON.stringify(productDocuments), { status: 200 });
     } catch (error) {
         if (error instanceof Error) {
             return new Response(JSON.stringify({ message: error.message }), {

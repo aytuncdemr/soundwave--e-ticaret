@@ -18,7 +18,7 @@ export default function ProductsProvider({
 }: {
     children: React.ReactNode;
 }) {
-    const [products, setProducts] = useState<ProductsContextInterface | null>(
+    const [products, setProducts] = useState<Product[] | null>(
         null
     );
     useEffect(() => {
@@ -41,15 +41,15 @@ export default function ProductsProvider({
         }
     }, []);
 
-    if (!products || !products?.droneProducts || !products.additionalProducts) {
+    if (!products) {
         return;
     }
 
     return (
         <ProductsContext.Provider
             value={{
-                droneProducts: products.droneProducts,
-                additionalProducts: products.additionalProducts,
+                droneProducts: products.filter((product) => product.type === "drone"),
+                additionalProducts: products.filter((product) => product.type === "additional"),
             }}
         >
             {children}

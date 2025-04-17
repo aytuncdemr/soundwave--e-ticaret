@@ -13,7 +13,7 @@ export default function PaymentOkayPage() {
 
     useEffect(() => {
         if (userContext?.user?.bucket && userContext.user.bucket.length > 0) {
-            userContext.dispatch({ type: "payment-okay", payload: "none" });
+            userContext.dispatch({ type: "paymentOkay", payload: "none" });
             updateUser({ ...userContext.user, bucket: [] });
         }
 

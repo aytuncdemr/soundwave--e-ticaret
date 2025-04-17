@@ -9,4 +9,5 @@ export interface Product {
     link: string;
     category: string;
     description?: string[];
+    type:"additional" | "drone";
 }

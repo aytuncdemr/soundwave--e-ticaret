@@ -5,7 +5,7 @@ import { type User } from "@/interfaces/User";
 import _ from "lodash";
 import { createContext, useReducer } from "react";
 
-type ActionType = keyof User | "setUser" | "logOut" | "payment-okay";
+type ActionType = keyof User | "setUser" | "logOut" | "paymentOkay";
 type PayloadType = string | User | Product[];
 
 interface UserContextInterface {
@@ -42,7 +42,7 @@ function userReducer(
         newUser.addresses.push(action.payload as string);
         return newUser;
     }
-    if (action.type === "payment-okay") {
+    if (action.type === "paymentOkay") {
         newUser.bucket = [];
         return newUser;
     }

@@ -1,11 +1,27 @@
 import { mongodb } from "@/utils/mongodb";
+import jwt from "jsonwebtoken";
 
 export async function POST(request: Request) {
     try {
         const body = await request.json();
 
-        const { users } = await mongodb();
+        if (
+            body.email === process.env.ADMIN_EMAIL &&
+            body.password === process.env.ADMIN_PASSWORD
+        ) {
+            const token = jwt.sign(
+                {
+                    email: process.env.ADMIN_EMAIL,
+                    password: process.env.ADMIN_PASSWORD,
+                },
+                process.env.JWT_SECRET as string,
+                { expiresIn: "1h" }
+            );
+            return new Response(JSON.stringify({ token }), { status: 200 });
+        }
 
+        const { users } = await mongodb();
+        
         const user = await users.findOne(body, {
             projection: {
                 password: 0,

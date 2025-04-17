@@ -1,3 +1,5 @@
+"use client";
+
 import { UserContext } from "@/context/UserProvider";
 import getDate from "@/utils/getDate";
 import axios, { isAxiosError } from "axios";
@@ -139,11 +141,7 @@ export default function LogupForm() {
                 <button className="bg-black text-white py-2 text-lg hover:bg-white hover:text-black border border-black duration-150">
                     Tamam
                 </button>
-                {error && (
-                    <p className="text-center font-bold">
-                        {error}
-                    </p>
-                )}
+                {error && <p className="text-center font-bold">{error}</p>}
                 <a href="#kampanyalar" className="text-center underline">
                     Kampanyalardan ve Haberlerden faydalanmak için tıklayın
                 </a>

@@ -14,7 +14,7 @@ export default function ProfilePage() {
     const [initialUserInfo, setInitialUserInfo] = useState(userContext?.user);
     const [isEditing, setIsEditing] = useState(false);
     const [newAddress, setNewAddress] = useState<string | null>(null);
-
+    console.log(userContext?.user);
     function submitHandler(e: FormEvent) {
         e.preventDefault();
         setIsEditing(false);

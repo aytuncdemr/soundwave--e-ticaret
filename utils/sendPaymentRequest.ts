@@ -4,7 +4,6 @@ import crypto from "crypto";
 import QueryString from "qs";
 import { mongodb } from "./mongodb";
 import groupBucket from "./groupBucket";
-import getDate from "./getDate";
 import getDateWithHour from "./getDateWithHour";
 
 export async function sendPaymentRequest(
@@ -22,7 +21,7 @@ export async function sendPaymentRequest(
         ])
     );
     const user_basket = Buffer.from(basket).toString("base64");
-    const merchant_oid = "TR" + Date.now();
+    const merchant_oid = "TR-" + Date.now();
     const max_installment = 0;
     const no_installment = 1;
     const user_ip = userIp;
