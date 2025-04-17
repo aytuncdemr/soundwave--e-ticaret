@@ -22,12 +22,12 @@ export default function ProductEditCard({
         setProducts((prevState) => {
             const newState = _.cloneDeep(prevState);
 
-            let productToUpdate = newState?.find(
-                (productElement) => productElement._id === product?._id
-            );
+            // let productToUpdate = newState?.find(
+            //     (productElement) => productElement._id === product?._id
+            // );
 
-            productToUpdate = {...productToUpdate as (Product & {_id:ObjectId}),[field]:value};
-            return newState;
+            // productToUpdate = {...productToUpdate as (Product & {_id:ObjectId}),[field]:value};
+             return newState;
         });
     }
 
