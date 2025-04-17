@@ -1,0 +1,41 @@
+[
+    {
+        "name": "SoundWave Mini Bird- Drone Full Hd Kamera kumanda ekranlı taşıma çantalı 2 Yıl garantili",
+        "price": { "$numberInt": "3999" },
+        "shortName": "Mini Bird",
+        "category": "Dronelar",
+        "imgPaths": [
+            "/mini-bird-1.webp",
+            "/mini-bird-2.webp",
+            "/mini-bird-3.webp",
+            "/mini-bird-4.webp",
+            "/mini-bird-5.webp",
+            "/mini-bird-6.webp",
+            "/mini-bird-7.webp",
+            "/mini-bird-8.webp"
+        ],
+        "stockAmount": { "$numberInt": "20" },
+        "link": "/urunler/soundwave-mini-bird",
+        "description": [
+            "Mini Bird Drone , hem başlangıç seviyesindeki kullanıcılar hem de deneyimli drone tutkunları için harika bir seçenek sunar. Kompakt yapısı ve hafif tasarımı sayesinde kolayca taşınabilir. 30 dakikaya kadar uçuş süresi sunan iki güçlü batarya ile uzun süreli eğlenceye hazır olun. Full HD kamera ile net ve kaliteli görüntüler yakalayabilir, **Beni Takip Et Modu** sayesinde hareket halindeyken dahi eşsiz kareler elde edebilirsiniz. Katlanabilir tasarımı ve özel taşıma çantası ile her yere rahatça götürebileceğiniz bu drone, dış mekan aktiviteleriniz için ideal bir yol arkadaşıdır.",
+            "Mini Bird Drone, sadece performansıyla değil, taşınabilirliğiyle de öne çıkıyor. Dayanıklı taşıma çantası, drone’unuzu darbelere karşı koruyarak güvenli taşıma imkanı sunar. Paket içeriğinde yer alan ekstra batarya ve çeşitli aksesuarlar sayesinde daha uzun süreli ve keyifli uçuşlar gerçekleştirebilirsiniz. 3 yıl garanti desteği ve 7/24 teknik destek hizmeti ile kullanıcı deneyimini en üst seviyeye çıkarır. Ücretsiz kargo ve güvenli ödeme seçenekleri sayesinde alışverişinizi kolay ve sorunsuz bir şekilde tamamlayabilirsiniz.",
+            "Mini Bird Drone fiyatı, tüm vergiler dahil olarak sunulmuştur. Kaliteli ve kompakt bir drone arayanlar için ideal bir tercihtir. Ücretsiz kargo avantajıyla siparişiniz ekstra bir ücret olmadan kapınıza kadar gelir. 3 yıl garanti süresi, ürünün uzun ömürlü ve güvenli kullanımını garanti eder. Şimdi sipariş verin ve Mini Bird ile gökyüzünü keşfetmenin keyfini çıkarın!"
+        ],
+        "type": "drone"
+    },
+    {
+        "name": "SoundWave Mini 4 Plus Gps Drone Haritalar Taşıma Çanta Oto Eve Dön 1 Batarya Ile 20dk Uçuş 1.5 Km Mesafe",
+        "price": { "$numberInt": "8799" },
+        "shortName": "Mini 4 Plus",
+        "category": "Dronelar",
+        "imgPaths": ["/mini-4-plus-1.webp", "/mini-4-plus-2.webp", "/mini-4-plus-3.webp"],
+        "stockAmount": { "$numberInt": "20" },
+        "link": "/urunler/soundwave-mini-4-plus",
+        "description": [
+            "Mini 4 Plus Drone, profesyonel seviyede performans sunan ve kompakt yapısıyla dikkat çeken bir drone modelidir. 45 dakikaya kadar uçuş süresi sunan yüksek kapasiteli bataryaları sayesinde uzun ve kesintisiz çekimler yapabilirsiniz. Gelişmiş 4K Ultra HD kamera teknolojisi ile olağanüstü netlikte görüntüler yakalayabilir, **Beni Takip Et Modu** ile dinamik ve akıcı videolar oluşturabilirsiniz. Katlanabilir tasarımı ve özel taşıma çantası ile seyahatlerinizde kolayca yanınızda taşıyabilir, her anı ölümsüzleştirebilirsiniz.",
+            "Mini 4 Plus Drone, gelişmiş teknolojisi kadar taşınabilirlik avantajıyla da öne çıkıyor. Sağlam taşıma çantası sayesinde drone’unuzu darbelere karşı koruyabilir, güvenle yanınızda taşıyabilirsiniz. Pakete dahil olan ekstra batarya ve profesyonel aksesuarlar, daha uzun süreli uçuşlar için ihtiyacınız olan her şeyi sunar. 3 yıl garanti ve 7/24 teknik destek hizmeti sayesinde her türlü sorunda hızlı çözüm alabilirsiniz. Ücretsiz kargo ve güvenli ödeme seçenekleriyle alışveriş deneyiminiz de en az drone kadar sorunsuz.",
+            "Mini 4 Plus Drone ,fiyatı, tüm vergiler dahil olarak sunulmuştur. En yeni drone teknolojisini deneyimlemek isteyen kullanıcılar için mükemmel bir tercihtir. Ücretsiz kargo avantajı ile ek ücret ödemeden ürününüze kavuşabilirsiniz. 3 yıl garanti süresi, ürünün uzun ömürlü ve güvenli kullanımını garanti altına alır. Hemen sipariş vererek Mini 4 Plus’ın sunduğu üst düzey uçuş deneyimini yaşamaya başlayın!"
+        ],
+        "type": "drone"
+    }
+]
