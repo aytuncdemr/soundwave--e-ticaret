@@ -58,6 +58,7 @@ export default function AdminPage() {
                 <header>
                     <h2 className="text-xl lg:text-5xl text-center">Admin</h2>
                 </header>
+                {error && <p className="text-lg">Hata:{error}</p>} 
                 <div className="flex items-center gap-4 text-lg xl:text-2xl">
                     <button
                         className={` ${
@@ -94,7 +95,7 @@ export default function AdminPage() {
                                 ></OrderCard>
                             );
                         })}
-                    {activeTab === "users" && <div className="users"></div>}
+                    {activeTab === "users" && <div className="users">{users?.map((user) => user.name)}</div>}
                     {activeTab === "products" &&
                         products?.map((product) => (
                             <ProductEditCard
@@ -104,6 +105,7 @@ export default function AdminPage() {
                             ></ProductEditCard>
                         ))}
                 </div>
+                        
             </div>
         </section>
     );
