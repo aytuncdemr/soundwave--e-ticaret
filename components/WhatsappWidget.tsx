@@ -4,7 +4,7 @@ export default function WhatsappWidget() {
     return (
         <div className="whatsapp-widget fixed bottom-4 right-4 lg:bottom-8 lg:right-8">
             <a
-                href={`https://wa.me/+905446434261?text=Merhaba Soundwave SKY Drone ürünleri ve ek parçaları hakkında sizden bilgi almak istiyorum.`}
+                href={`https://wa.me/+905319428228?text=Merhaba, Soundwave Drone ürünleri hakkında sizden destek almak istiyorum.`}
                 target="_blank"
                 rel="noopener noreferrer"
             >

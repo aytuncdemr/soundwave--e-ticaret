@@ -102,9 +102,9 @@ export default function Footer() {
                         <FontAwesomeIcon icon={faPhone}></FontAwesomeIcon>
                         <a
                             className="hover:text-gray-400 duration-150 text-lg"
-                            href="tel:+90 544 643 42 61"
+                            href="tel:+90 531 942 82 28"
                         >
-                            +90 544 643 42 61
+                            +90 531 942 82 28
                         </a>
                     </div>
                     <div className="flex items-center gap-3">
