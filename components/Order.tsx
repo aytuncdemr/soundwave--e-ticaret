@@ -76,7 +76,7 @@ export default function OrderCard({ order }: { order: Order }) {
                 {!order.paid && (
                     <>
                         <p>
-                            Hata: ${order.payment_error} ($
+                            Hata: {order.payment_error} ( kod:
                             {order.payment_error_code})
                         </p>
                     </>
