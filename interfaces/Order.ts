@@ -10,4 +10,6 @@ export interface Order {
     paid: boolean;
     date: string;
     status:string;
+    payment_error_code?:string;
+    payment_error?:string;
 }
