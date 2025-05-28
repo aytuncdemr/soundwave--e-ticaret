@@ -19,8 +19,8 @@ export default function OrderCard({ order }: { order: Order }) {
                     merchant_oid: order.merchant_oid,
                 }),
             });
-        }catch(error){
-            if(error instanceof Error) {
+        } catch (error) {
+            if (error instanceof Error) {
                 console.error("Gönderim hatası:", error.message);
             }
         }
@@ -99,7 +99,11 @@ export default function OrderCard({ order }: { order: Order }) {
                     </>
                 )}
                 <p className="text-center">({order.status})</p>
-                <button type="button" onClick={sendSentHandler}>Gönderildi olarak işaretle</button>
+                {order.paid && (
+                    <button type="button" onClick={sendSentHandler}>
+                        Gönderildi olarak işaretle
+                    </button>
+                )}
             </div>
         </>
     );
