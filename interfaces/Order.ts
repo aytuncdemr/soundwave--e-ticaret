@@ -9,7 +9,8 @@ export interface Order {
     bucket: [string, string, number][];
     paid: boolean;
     date: string;
-    status:string;
-    payment_error_code?:string;
-    payment_error?:string;
+    status: string;
+    payment_error_code?: string;
+    payment_error?: string;
+    isSent: boolean;
 }

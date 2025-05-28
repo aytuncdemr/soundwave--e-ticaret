@@ -8,12 +8,29 @@ import { useContext } from "react";
 export default function OrderCard({ order }: { order: Order }) {
     const productsContext = useContext(ProductsContext);
 
+    async function sendSentHandler() {
+        try {
+            await fetch("/api/orders", {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    merchant_oid: order.merchant_oid,
+                }),
+            });
+        }catch(error){
+            if(error instanceof Error) {
+                console.error("Gönderim hatası:", error.message);
+            }
+        }
+    }
     return (
         <>
             <div
                 className={`border border-gray-300 p-6 rounded-lg text-lg lg:text-xl flex flex-col gap-6 ${
                     !order.paid && "text-red-500"
-                }`}
+                } ${order.isSent && "text-green-500"}`}
                 key={order.merchant_oid}
             >
                 <h2 className="text-center text-2xl mb-4">
@@ -82,6 +99,7 @@ export default function OrderCard({ order }: { order: Order }) {
                     </>
                 )}
                 <p className="text-center">({order.status})</p>
+                <button type="button" onClick={sendSentHandler}>Gönderildi olarak işaretle</button>
             </div>
         </>
     );

@@ -82,6 +82,7 @@ export async function sendPaymentRequest(
         paid: false,
         status: "Ödeme Bekleniyor - " + getDateWithHour(),
         date: getDateWithHour(),
+        isSent: false,
     });
     return data;
 }
