@@ -5,6 +5,7 @@ import QueryString from "qs";
 import { mongodb } from "./mongodb";
 import groupBucket from "./groupBucket";
 import getDateWithHour from "./getDateWithHour";
+import { min } from "lodash";
 
 export async function sendPaymentRequest(
     payment: User & { total: number },
@@ -22,8 +23,9 @@ export async function sendPaymentRequest(
     );
     const user_basket = Buffer.from(basket).toString("base64");
     const merchant_oid = "TR-" + Date.now();
-    const max_installment = 0;
-    const no_installment = 1;
+    const max_installment = 12;
+    const min_installment = 3;
+    const no_installment = 0;
     const user_ip = userIp;
     const email = payment.email;
     const payment_amount = payment.total * 100;
@@ -55,6 +57,7 @@ export async function sendPaymentRequest(
         user_ip,
         no_installment,
         max_installment,
+        min_installment,
         currency,
         paytr_token,
     };
