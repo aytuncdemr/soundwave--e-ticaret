@@ -25,6 +25,11 @@ export default function OrderCard({ order }: { order: Order }) {
             }
         }
     }
+
+    if (!order.paid) {
+        return null;
+    }
+
     return (
         <>
             <div
