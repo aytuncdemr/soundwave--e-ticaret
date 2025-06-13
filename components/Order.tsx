@@ -104,7 +104,7 @@ export default function OrderCard({ order }: { order: Order }) {
                     </>
                 )}
                 <p className="text-center">({order.status})</p>
-                {order.paid && (
+                {order.paid && !order.isSent && (
                     <button type="button" onClick={sendSentHandler}>
                         Gönderildi olarak işaretle
                     </button>
