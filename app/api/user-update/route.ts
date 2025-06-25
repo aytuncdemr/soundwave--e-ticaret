@@ -3,7 +3,6 @@ import { ObjectId } from "mongodb";
 
 export async function POST(request: Request) {
     const body = await request.json();
-
     try {
         const { _id, ...updateFields } = body;
         const { users } = await mongodb();

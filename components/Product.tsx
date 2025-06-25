@@ -19,6 +19,10 @@ import getSuggestedProducts from "@/utils/getSuggestedProducts";
 import ProductCarousel from "./ProductCarousel";
 import Button from "./Button";
 import updateUser from "@/utils/updateUser";
+import TeknosaLogo from "@/public/teknosa-logo.png";
+import HBLogo from "@/public/hepsiburada-logo.webp";
+
+import Image from "next/image";
 
 export default function Product() {
     const products = useContext(ProductsContext);
@@ -188,56 +192,67 @@ export default function Product() {
                         </div>
                     </div>
                     <div className="flex flex-col gap-4 items-center xl:items-start">
-                    <p className="text-2xl lg:text-3xl  text-gray-600 mb-2">
-                        Adet
-                    </p>
-                    <div className="flex items-center w-48  justify-between  border">
-                        <button
-                            className="flex items-center justify-center border-r  py-4 px-4"
-                            onClick={() => {
-                                if (product.stockAmount > 0) {
-                                    setAmount((prevState) => prevState + 1);
+                        <p className="text-2xl lg:text-3xl  text-gray-600 mb-2">
+                            Adet
+                        </p>
+                        <div className="flex items-center w-48  justify-between  border">
+                            <button
+                                className="flex items-center justify-center border-r  py-4 px-4"
+                                onClick={() => {
+                                    if (product.stockAmount > 0) {
+                                        setAmount((prevState) => prevState + 1);
+                                    }
+                                }}
+                            >
+                                <FontAwesomeIcon
+                                    className="lg:text-lg "
+                                    icon={faPlus}
+                                ></FontAwesomeIcon>
+                            </button>
+                            <p className="text-xl lg:text-2xl ">{amount}</p>
+                            <button
+                                className="flex items-center justify-center border-l py-4 px-4"
+                                onClick={() =>
+                                    setAmount((prevState) =>
+                                        prevState - 1 > -1 ? prevState - 1 : 0
+                                    )
                                 }
-                            }}
+                            >
+                                <FontAwesomeIcon
+                                    className="lg:text-lg xl:text-xl"
+                                    icon={faMinus}
+                                ></FontAwesomeIcon>
+                            </button>
+                        </div>
+                        {product?.stockAmount === 0 && (
+                            <p className="text-red-500 lg:text-lg xl:text-xl">
+                                (Ürünün stoğu tükenmiş)
+                            </p>
+                        )}
+                        <Button
+                            onClick={addToBasket}
+                            className={`py-3 px-12 ${
+                                (amount < 1 || product?.stockAmount === 0) &&
+                                "bg-gray-500 border border-gray-500 pointer-events-none"
+                            }`}
                         >
-                            <FontAwesomeIcon
-                                className="lg:text-lg "
-                                icon={faPlus}
-                            ></FontAwesomeIcon>
-                        </button>
-                        <p className="text-xl lg:text-2xl ">
-                            {amount}
-                        </p>
-                        <button
-                            className="flex items-center justify-center border-l py-4 px-4"
-                            onClick={() =>
-                                setAmount((prevState) =>
-                                    prevState - 1 > -1 ? prevState - 1 : 0
-                                )
-                            }
-                        >
-                            <FontAwesomeIcon
-                                className="lg:text-lg xl:text-xl"
-                                icon={faMinus}
-                            ></FontAwesomeIcon>
-                        </button>
+                            Sepete Ekle
+                        </Button>
+                        <div className="flex flex-col gap-2">
+                            <div>
+                                <p className="text-center md:text-start">Diğer platformlardan sipariş vermek için</p>
+                            </div>
+                            <div className="flex items-center gap-2 mt-4">
+                                <a className="border rounded-xl hover:bg-gray-100 duration-150" target="_blank" href="https://www.teknosa.com/magaza/soundwave">
+                                    <Image src={TeknosaLogo} alt="teknosa logo" className="h-[120px] w-[220px]" />
+                                </a>
+                                <a className="border rounded-xl hover:bg-gray-100 duration-150" target="_blank" href="https://www.hepsiburada.com/magaza/soundwave-teknoloji?tab=allproducts">
+                                    <Image src={HBLogo} alt="hb logo" className="h-[120px] w-[220px]" />
+                                </a>
+                                
+                            </div>
+                        </div>
                     </div>
-                    {product?.stockAmount === 0 && (
-                        <p className="text-red-500 lg:text-lg xl:text-xl">
-                            (Ürünün stoğu tükenmiş)
-                        </p>
-                    )}
-                    <Button
-                        onClick={addToBasket}
-                        className={`py-3 px-12 ${
-                            (amount < 1 || product?.stockAmount === 0) &&
-                            "bg-gray-500 border border-gray-500 pointer-events-none"
-                        }`}
-                    >
-                        Sepete Ekle
-                    </Button>
-                    </div>
-                    
                 </div>
             </div>
             {product.category === "Dronelar" && (
