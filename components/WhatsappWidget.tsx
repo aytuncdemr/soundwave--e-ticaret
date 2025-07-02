@@ -1,6 +1,7 @@
 import { faSquareWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function WhatsappWidget() {
+return null;
     return (
         <div className="whatsapp-widget fixed bottom-4 right-4 lg:bottom-8 lg:right-8">
             <a
