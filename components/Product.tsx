@@ -250,9 +250,14 @@ export default function Product() {
                                 <a className="border rounded-xl hover:bg-gray-100 duration-150" target="_blank" href="https://www.teknosa.com/magaza/soundwave">
                                     <Image src={TeknosaLogo} alt="teknosa logo" className="h-[120px] w-[220px]" />
                                 </a>
-                                <a className="border rounded-xl hover:bg-gray-100 duration-150" target="_blank" href="https://www.hepsiburada.com/magaza/soundwave-teknoloji?tab=allproducts">
-                                    <Image src={HBLogo} alt="hb logo" className="h-[120px] w-[220px]" />
-                                </a>
+                               <a
+  className="border rounded-xl bg-gray-300 text-gray-500 pointer-events-none opacity-70"
+  target="_blank"
+  href="https://www.hepsiburada.com/magaza/soundwave-teknoloji?tab=allproducts"
+>
+  <Image src={HBLogo} alt="hb logo" className="h-[120px] w-[220px]" />
+</a>
+
                                 
                             </div>
                         </div>
