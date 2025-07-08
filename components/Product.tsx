@@ -21,6 +21,7 @@ import Button from "./Button";
 import updateUser from "@/utils/updateUser";
 import TeknosaLogo from "@/public/teknosa-logo.png";
 import HBLogo from "@/public/hepsiburada-logo.webp";
+import TrendyolLogo from "@/public/trendyol-logo.png";
 
 import Image from "next/image";
 
@@ -243,6 +244,9 @@ export default function Product() {
                                 <p className="text-center md:text-start">Diğer platformlardan sipariş vermek için</p>
                             </div>
                             <div className="flex items-center gap-2 mt-4">
+                                <a className="border rounded-xl hover:bg-gray-100 duration-150" target="_blank" href="https://www.trendyol.com/magaza/skypilot-m-1141271?sst=0">
+                                    <Image src={TrendyolLogo} alt="trendyol logo" className="h-[120px] w-[220px]" />
+                                </a>
                                 <a className="border rounded-xl hover:bg-gray-100 duration-150" target="_blank" href="https://www.teknosa.com/magaza/soundwave">
                                     <Image src={TeknosaLogo} alt="teknosa logo" className="h-[120px] w-[220px]" />
                                 </a>
