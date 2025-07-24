@@ -98,15 +98,7 @@ export default function Footer() {
                             İletişim formu
                         </Link>
                     </div>
-                    <div className="flex items-center gap-3">
-                        <FontAwesomeIcon icon={faPhone}></FontAwesomeIcon>
-                        <a
-                            className="hover:text-gray-400 duration-150 text-lg"
-                            href="tel:+90 531 942 82 28"
-                        >
-                            +90 531 942 82 28
-                        </a>
-                    </div>
+                    
                     <div className="flex items-center gap-3">
                         <FontAwesomeIcon icon={faEnvelope}></FontAwesomeIcon>
                         <a
