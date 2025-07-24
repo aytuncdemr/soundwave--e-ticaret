@@ -105,7 +105,7 @@ export default function Footer() {
                             className="hover:text-gray-400 duration-150 text-lg"
                             href="mailto:infosoundwavesky@gmail.com"
                         >
-                            infosoundwavesky@gmail.com
+                            soundwaveskyinfo@gmail.com
                         </a>
                     </div>
                     <div className="flex items-center gap-3">
