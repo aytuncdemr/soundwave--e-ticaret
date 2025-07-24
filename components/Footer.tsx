@@ -111,8 +111,7 @@ export default function Footer() {
                     <div className="flex items-center gap-3">
                         <FontAwesomeIcon icon={faLocationDot}></FontAwesomeIcon>
                         <p>
-                            Yeşilbağlar Mah. D100 Bulvarı Pendik Pera
-                            <br />A Blok No:20 Kapı No: 29 Pendik/İstanbul
+                             Pendik/İstanbul
                         </p>
                     </div>
                 </div>
