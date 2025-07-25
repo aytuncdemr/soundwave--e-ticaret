@@ -5,7 +5,6 @@ import {
     faEnvelope,
     faLocationDot,
     faLock,
-    faPhone,
     faQuestion,
     faStore,
     faTableList,
