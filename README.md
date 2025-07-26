@@ -1,4 +1,4 @@
-# 🚁 SoundWave
+# SoundWave
 
 **SoundWave** is a modern and responsive e-commerce platform for buying **drones** and **drone parts**. Built with **React**, **Next.js**, and **TailwindCSS**, it offers a fast, clean, and user-friendly shopping experience with real-time notifications, dynamic product displays, and smooth cart functionality.
 
@@ -37,29 +37,3 @@ soundwave/
 ├── context/ # App-level state management
 ├── utils/ # Axios instance, formatters, helpers
 └── ...
-
-yaml
-Copy
-Edit
-
----
-
-## 🚀 Getting Started
-
-### 1. Clone the Repo
-
-```bash
-git clone https://github.com/your-username/soundwave.git
-cd soundwave
-2. Install Dependencies
-bash
-Copy
-Edit
-npm install
-3. Run Locally
-bash
-Copy
-Edit
-npm run dev
-Go to http://localhost:3000
-
