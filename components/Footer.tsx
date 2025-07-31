@@ -5,7 +5,6 @@ import {
     faEnvelope,
     faLocationDot,
     faLock,
-    faPhone,
     faQuestion,
     faStore,
     faTableList,
@@ -99,15 +98,6 @@ export default function Footer() {
                         </Link>
                     </div>
 
-                        <div className="flex items-center gap-3">
-                        <FontAwesomeIcon icon={faPhone}></FontAwesomeIcon>
-                        <a
-                            className="hover:text-gray-400 duration-150 text-lg"
-                            href="tel:+90 531 605 04 92"
-                        >
-                           +90 531 605 04 92
-                        </a>
-                    </div>
                     
                     <div className="flex items-center gap-3">
                         <FontAwesomeIcon icon={faEnvelope}></FontAwesomeIcon>
